@@ -12,4 +12,4 @@ This repository will host the server and the mobile app. There will be one folde
 Architecture
 ============
 
-We will have a Rails Backend with a json API, a web frontend and mobile apps using PhoneGap. The HTML templates will use Moustache.
+We will have a NodeJs backend with a json API, a web frontend and mobile apps using PhoneGap. For HTML templates, we will use Moustache.
