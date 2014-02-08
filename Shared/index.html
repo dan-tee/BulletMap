@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BulletMap</title>
+    <link rel="stylesheet" href="libs/jquery.mobile-1.4.0.min.css" />
+    <script src="libs/jquery.min.js" ></script>
+    <script src="libs/jquery.mobile-1.4.0.min.js"></script>
+    </head>
+
+<body>
+
+
+<div data-role="page" id="bullet-search">
+
+    <div data-role="header">
+        <h1>Bullet Map</h1>
+    </div>
+
+    <div role="main" class="ui-content">
+        <h2>Bullet Search</h2>
+        <form >
+            <label for="file">File:</label>
+            <input name="image-file" id="image-file" value="" type="file">
+
+            <label for="serial-number">Serial Number:</label>
+            <input name="serial-number" id="serial-number" value="" type="text">
+
+            <label for="bullet-location">Bullet Location:</label>
+            <input name="bullet-location" id="bullet-location" value="" type="text">
+            <div>TODO: Map</div>
+
+            <input type="submit" value="submit" />
+            <!--
+            <p><a href="#bullet-source" class="ui-btn ui-shadow ui-corner-all">submit</a></p>
+            -->
+        </form>
+    </div>
+<!--
+    <div data-role="footer">
+        <h4>Page Footer</h4>
+    </div>
+    -->
+</div>
+
+<div data-role="page" id="bullet-source">
+
+    <div data-role="header">
+        <h1>Bullet Map</h1>
+    </div>
+
+    <div role="main" class="ui-content">
+        <h2>Bullet Info</h2>
+        <table>
+            <tr>
+                <td>Weapon</td>
+                <td>{{weapon}}</td>
+            </tr>
+            <tr>
+                <td>Manufacturer</td>
+                <td>{{manufacturer}}</td>
+            </tr>
+            <tr>
+                <td>Country of Origin</td>
+                <td>{{countryOfOrigin}}</td>
+            </tr>
+        </table>
+    </div>
+    <!--
+        <div data-role="footer">
+            <h4>Page Footer</h4>
+        </div>
+        -->
+</div>
+
+</body>
+</html>
