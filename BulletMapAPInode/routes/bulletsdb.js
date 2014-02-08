@@ -15,8 +15,6 @@ var server = new Server('localhost', 27017, {auto_reconnect: true});
 db = new Db(DbName, server, {safe: true});
 
 
-
-
 exports.findAll = function(req, res) {
     db.collection('bullets', function(err, collection) {
         collection.find().toArray(function(err, items) {
@@ -28,11 +26,10 @@ exports.findAll = function(req, res) {
 exports.findOnebullet = function(req, res){
     var id = req.params.id;
     db.collection('bullets', function(err, collection){
-        collection.findOne({'_id':new BSON.ObjectID(id)}, function(err, item) {
+        collection.findOne({'headstamp':id}, function(err, item) {
             res.send(item);
         });
     });
-
 };
 
 exports.addOnebullet = function(req, res){
@@ -46,6 +43,6 @@ exports.addOnebullet = function(req, res){
 
         });
     });
-}
+};
 
 

@@ -3,12 +3,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BulletMap</title>
+    <title>Bullet Map</title>
     <link rel="stylesheet" href="libs/jquery.mobile-1.4.0.min.css" />
     <script src="libs/jquery.min.js" ></script>
     <script src="libs/jquery.mobile-1.4.0.min.js"></script>
     <script src="libs/jquery.mustache.js"></script>
-    <script src="js/web.js"></script>
     </head>
 
 <body>
@@ -22,28 +21,53 @@
 
     <div role="main" class="ui-content">
         <h2>Bullet Search</h2>
-        <form >
-            <label for="file">File:</label>
+        <form>
+            <label for="image-file">File:</label>
             <input name="image-file" id="image-file" value="" type="file">
 
-            <label for="serial-number">Serial Number:</label>
-            <input name="serial-number" id="serial-number" value="" type="text">
+            <label for="serial-number">Headstamp:</label>
+            <input name="headstamp" id="serial-number" value="" type="text">
 
             <label for="bullet-location">Bullet Location:</label>
             <input name="bullet-location" id="bullet-location" value="" type="text">
             <div>TODO: Map</div>
 
-            <p><a href="#bullet-source" class="ui-btn ui-shadow ui-corner-all">submit</a></p>
-            <!--
-            <input type="submit" value="submit" />
-            -->
+            <button id="submit-search" class="ui-shadow ui-btn ui-corner-all">Submit</button>
+
         </form>
     </div>
-<!--
     <div data-role="footer">
-        <h4>Page Footer</h4>
+         <div data-role="navbar">
+            <ul>
+                <li><a href="#bullet-search" data-icon="grid" class="ui-btn-active">Search</a></li>
+                <li><a href="#bullet-map" data-icon="star">Map</a></li>
+                <li><a href="#bullet-input" data-icon="gear">Input</a></li>
+            </ul>
+        </div>
     </div>
-    -->
+
+</div>
+
+<div data-role="page" id="bullet-map">
+
+    <div data-role="header">
+        <h1>Bullet Map</h1>
+    </div>
+
+    <div role="main" class="ui-content">
+        <h2>Header</h2>
+        Content
+    </div>
+    <div data-role="footer">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#bullet-search" data-icon="grid">Search</a></li>
+                <li><a href="#bullet-map" data-icon="star" class="ui-btn-active">Map</a></li>
+                <li><a href="#bullet-input" data-icon="gear">Input</a></li>
+            </ul>
+        </div>
+    </div>
+
 </div>
 
 <div data-role="page" id="bullet-source">
@@ -69,12 +93,54 @@
             </tr>
         </table>
     </div>
-    <!--
-        <div data-role="footer">
-            <h4>Page Footer</h4>
+    <div data-role="footer">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#bullet-search" data-icon="grid" class="ui-btn-active">Search</a></li>
+                <li><a href="#bullet-map" data-icon="star">Map</a></li>
+                <li><a href="#bullet-input" data-icon="gear">Input</a></li>
+            </ul>
         </div>
-        -->
+    </div>
+
 </div>
 
+<div data-role="page" id="bullet-input">
+
+    <div data-role="header">
+        <h1>Bullet Map</h1>
+    </div>
+
+    <div role="main" class="ui-content">
+        <h2>Bullet Input</h2>
+        <form action="/bullet" method="post">
+
+            <label for="headstamp">Headstamp:</label>
+            <input name="headstamp" id="headstamp" value="" type="text">
+
+            <label for="weapon">Weapon:</label>
+            <input name="weapon" id="weapon" value="" type="text">
+
+            <label for="manufacturer">Manufacturer:</label>
+            <input name="manufacturer" id="manufacturer" value="" type="text">
+
+            <label for="countryOfOrigin">Country of Origin:</label>
+            <input name="countryOfOrigin" id="countryOfOrigin" value="" type="text">
+
+            <input type="submit" value="Submit" />
+        </form>
+    </div>
+    <div data-role="footer">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#bullet-search" data-icon="grid">Search</a></li>
+                <li><a href="#bullet-map" data-icon="star">Map</a></li>
+                <li><a href="#bullet-input" data-icon="gear" class="ui-btn-active">Input</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="js/web.js"></script>
+<script src="libs/jquery.urldecoder.min.js"></script>
 </body>
 </html>

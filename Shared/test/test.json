@@ -1,5 +1,6 @@
 {
     "weapon": "Deadly",
     "manufacturer": "Empire",
-    "countryOfOrigin": "Underground"
+    "countryOfOrigin": "Underground",
+    "_id":"1234"
 }
