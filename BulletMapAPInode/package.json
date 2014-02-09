@@ -1,0 +1,25 @@
+{
+  "name": "bulletmap",
+  "version": "0.0.0",
+  "description": "Crowd source information about global weapons trade",
+  "main": "myApp.js",
+  "dependencies": {
+    "express": "~3.4.8",
+    "mongodb": "~1.1.8",
+    "socket.io": "~0.9.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:Dan-Tee/BulletMap.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dan-Tee/BulletMap/issues"
+  },
+  "homepage": "https://github.com/Dan-Tee/BulletMap"
+}
