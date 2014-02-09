@@ -1,5 +1,5 @@
 function requestDataAndMark(){
-    var url = "/test/bulletMap.json";
+    var url = "/found_shells";
     $.getJSON(url, markFoundBullets);
 }
 
