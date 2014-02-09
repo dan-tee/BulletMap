@@ -5,6 +5,17 @@ function createSmallMap(){
 
     small_map = createMap('small-map');
     small_map.on('click', onMapClick);
+
+    if (navigator.geolocation)
+    {
+        navigator.geolocation.getCurrentPosition(markPosition);
+    }
+}
+
+function markPosition(){
+    var latlng = L.latLng(position.coords.latitude, position.coords.longitude);
+    writeLocationToUi(latlng);
+    setMarker(latlng);
 }
 
 function onMapClick(e){
