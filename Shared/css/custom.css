@@ -9,6 +9,21 @@
     padding-left: 10px;
 }
 
+#location {
+    width: 100%;
+}
+
+#location td{
+    vertical-align: top;
+    width: 50%;
+}
+
+#small-map{
+    height: 200px;
+    width: 300px;
+    border: 1px solid grey;
+}
+
 #map{
     background-color: #fff;
     margin-right: 150px;
