@@ -39,17 +39,26 @@ function paintForCountry(color, findings){
     map.addLayer(vectorLayer);
 }
 
-var map = new OpenLayers.Map('map', { controls: [new OpenLayers.Control.PanZoom()] });
-var wms = new OpenLayers.Layer.WMS( "OpenLayers WMS",
-    "http://vmap0.tiles.osgeo.org/wms/vmap0", {layers: 'basic'}, {'displayInLayerSwitcher':false} );
-map.addLayer(wms);
+function createAndMarkMap(){
+    if (window.map && window.map instanceof OpenLayers.Map){
+        return;
+    }
 
-var panel = new OpenLayers.Control.NavToolbar({'div':OpenLayers.Util.getElement('paneldiv')});
-map.addControl(panel);
-//map.addControl(new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher')}));
+    map = new OpenLayers.Map('map', { controls: [new OpenLayers.Control.PanZoom()] });
+    var wms = new OpenLayers.Layer.WMS( "OpenLayers WMS",
+        "http://vmap0.tiles.osgeo.org/wms/vmap0", {layers: 'basic'}, {'displayInLayerSwitcher':false} );
+    map.addLayer(wms);
 
-// map.zoomToMaxExtent();
-requestDataAndMark();
+    var panel = new OpenLayers.Control.NavToolbar({'div':OpenLayers.Util.getElement('paneldiv')});
+    map.addControl(panel);
+    //map.addControl(new OpenLayers.Control.LayerSwitcher({'div':OpenLayers.Util.getElement('layerswitcher')}));
+
+    map.zoomToMaxExtent();
+    requestDataAndMark();
+}
+
+var map;
+$(document).on('pageshow', '#bullet-map', createAndMarkMap);
 
 
 

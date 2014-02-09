@@ -12,8 +12,19 @@
 #map{
     background-color: #fff;
     margin-right: 150px;
-    height: 100%;
     width: auto;
+    height: 400px;
     overflow: hidden;
     border: 1px solid grey;
 }
+
+.ui-content {
+    position: absolute;
+    top: 103px;
+    right: 0;
+    height: 100%;
+    left: 0;;
+}
+
+
+
