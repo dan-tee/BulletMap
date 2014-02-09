@@ -1,0 +1,41 @@
+[
+    {
+        "Origin" : "Germany",
+        "Locations" : [
+            {
+                "Lattitude" : "52.4958394",
+                "Longitude" : "13.3587728508979"
+            },
+            {
+                "Lattitude" : "52.4968292",
+                "Longitude" : "13.3577728508979"
+            }
+        ]
+    },
+    {
+        "Origin" : "Austria",
+        "Locations" : [
+            {
+                "Lattitude" : "53.4948292",
+                "Longitude" : "14.3577728508979"
+            },
+            {
+                "Lattitude" : "54.4958292",
+                "Longitude" : "13.3567728508979"
+            }
+        ]
+    },
+    {
+        "Origin" : "Switzerland",
+        "Locations" : [
+            {
+                "Lattitude" : "51.4848292",
+                "Longitude" : "13.3577728508979"
+            },
+            {
+                "Lattitude" : "52.4958292",
+                "Longitude" : "14.3667728508979"
+            }
+        ]
+    }
+]

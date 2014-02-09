@@ -148,6 +148,6 @@
 </div>
 <script src="js/web.js"></script>
 <script src="libs/jquery.urldecoder.min.js"></script>
-<script src="js/map_with_markers.js" defer="defer" type="text/javascript"></script>
+<script src="js/map_with_markers.js" type="text/javascript"></script>
 </body>
 </html>

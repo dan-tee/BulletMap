@@ -1,0 +1,19 @@
+#bullet-map .ui-content{
+    /*color: #224;
+    background-color: #eeeeff;*/
+}
+
+#legend{
+    float: right;
+    width: 150px;
+    padding-left: 10px;
+}
+
+#map{
+    background-color: #fff;
+    margin-right: 150px;
+    height: 100%;
+    width: auto;
+    overflow: hidden;
+    border: 1px solid grey;
+}
