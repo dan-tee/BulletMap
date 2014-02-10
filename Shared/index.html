@@ -24,7 +24,7 @@
     </div>
 
     <div role="main" class="ui-content">
-        <h2>Bullet Search</h2>
+        <h2>Report Finding</h2>
         <form>
             <label for="serial-number">Headstamp:</label>
             <input name="headstamp" id="serial-number" value="" type="text">
@@ -32,6 +32,9 @@
             <table id="location">
                 <tbody>
                     <tr>
+			<td>
+                            <div id="small-map"></div>
+                        </td>
                         <td>
                             <!--
                             <label for="bullet-location">Found Location:</label>
@@ -43,10 +46,7 @@
 
                             <label for="longitude">Longitude</label>
                             <input name="longitude" id="longitude" value="" type="text">
-                        </td>
-                        <td>
-                            <div id="small-map"></div>
-                        </td>
+                        </td>                       
                     </tr>
                 </tbody>
             </table>
@@ -60,7 +60,7 @@
     <div data-role="footer">
          <div data-role="navbar">
             <ul>
-                <li><a href="#bullet-search" data-icon="grid" class="ui-btn-active">Search</a></li>
+                <li><a href="#bullet-search" data-icon="grid" class="ui-btn-active">Report</a></li>
                 <li><a href="#bullet-map" data-icon="star">Map</a></li>
                 <!--
                 <li><a href="#bullet-input" data-icon="gear">Input</a></li>
@@ -88,7 +88,7 @@
     <div data-role="footer">
         <div data-role="navbar">
             <ul>
-                <li><a href="#bullet-search" data-icon="grid">Search</a></li>
+                <li><a href="#bullet-search" data-icon="grid">Report</a></li>
                 <li><a href="#bullet-map" data-icon="star" class="ui-btn-active">Map</a></li>
                 <!--
                 <li><a href="#bullet-input" data-icon="gear">Input</a></li>
@@ -136,41 +136,6 @@
 
 </div>
 
-<div data-role="page" id="bullet-input">
-
-    <div data-role="header">
-        <h1>Bullet Map</h1>
-    </div>
-
-    <div role="main" class="ui-content">
-        <h2>Bullet Input</h2>
-        <form action="/bullet" method="post">
-
-            <label for="headstamp">Headstamp:</label>
-            <input name="headstamp" id="headstamp" value="" type="text">
-
-            <label for="weapon">Weapon:</label>
-            <input name="weapon" id="weapon" value="" type="text">
-
-            <label for="manufacturer">Manufacturer:</label>
-            <input name="manufacturer" id="manufacturer" value="" type="text">
-
-            <label for="countryOfOrigin">Country of Origin:</label>
-            <input name="countryOfOrigin" id="countryOfOrigin" value="" type="text">
-
-            <input type="submit" value="Submit" />
-        </form>
-    </div>
-    <div data-role="footer">
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#bullet-search" data-icon="grid">Search</a></li>
-                <li><a href="#bullet-map" data-icon="star">Map</a></li>
-                <li><a href="#bullet-input" data-icon="gear" class="ui-btn-active">Input</a></li>
-            </ul>
-        </div>
-    </div>
-</div>
 <script type="text/javascript">
     var server = "http://localhost:3000";
 </script>

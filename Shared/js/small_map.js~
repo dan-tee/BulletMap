@@ -12,7 +12,7 @@ function createSmallMap(){
     }
 }
 
-function markPosition(position){
+function markPosition(){
     var latlng = L.latLng(position.coords.latitude, position.coords.longitude);
     writeLocationToUi(latlng);
     setMarker(latlng);
