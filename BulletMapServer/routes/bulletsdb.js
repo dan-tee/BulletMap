@@ -3,20 +3,28 @@
  #hack4Good Selim
  */
 
+var DbName = 'bulletsDb';
+var bulletInfoCollection = 'bullets';
+var foudShellsCollection = 'found_shells';
+
 var mongo = require('mongodb');
 
-var Server = mongo.Server,
-    Db = mongo.Db,
-    BSON = mongo.BSONPure;
+var server = new mongo.Server('localhost', 27017, {auto_reconnect: true});
+var newDb = new mongo.Db(DbName, server);
+var db;
+newDb.open(function(err, openDb){
+    db = openDb;
+});
 
-var DbName = 'bulletsDb';
-
-var server = new Server('localhost', 27017, {auto_reconnect: true});
-db = new Db(DbName, server, {safe: true});
-
+function checkDb(){
+    if (!db){
+        throw new Error("DB hasn't been opened yet.");
+    }
+}
 
 exports.findAll = function (req, res) {
-    db.collection('bullets', function (err, collection) {
+    checkDb();
+    db.collection(bulletInfoCollection, function (err, collection) {
         collection.find().toArray(function (err, items) {
             res.send(items);
         });
@@ -24,18 +32,22 @@ exports.findAll = function (req, res) {
 };
 
 exports.findOnebullet = function (req, res) {
+    checkDb();
     var id = req.params.id;
-    db.collection('bullets', function (err, collection) {
+    db.collection(bulletInfoCollection, function (err, collection) {
+        console.log('Looking for item with id ' + id)
         collection.findOne({'headstamp': id}, function (err, item) {
+            console.log('Item with id ' + id + ' found.')
             res.send(item);
         });
     });
 };
 
 exports.addOnebullet = function (req, res) {
+    checkDb();
     var bullet = req.body;
 
-    db.collection('bullets', function (err, collection) {
+    db.collection(bulletInfoCollection, function (err, collection) {
 
         collection.insert(bullet, true, function (err, collection) {
             collection.msg = 'success'
@@ -46,7 +58,8 @@ exports.addOnebullet = function (req, res) {
 };
 
 exports.findShellLocations = function (req, res) {
-    db.collection('found_shells', function (err, collection) {
+    checkDb();
+    db.collection(foudShellsCollection, function (err, collection) {
         collection.aggregate([
             { $group: {_id: "$Origin", "Locations": {"$push": {"Longitude": "$longitude", "Latitude": "$latitude"}}}},
             { $project: {"Origin": "$_id", "Locations": "$Locations"}}
@@ -65,9 +78,10 @@ exports.findShellLocations = function (req, res) {
 };
 
 exports.addOneShellLocation = function (req, res) {
+    checkDb();
     var shell = req.body;
 
-    db.collection('found_shells', function (err, collection) {
+    db.collection(foudShellsCollection, function (err, collection) {
 
         collection.insert(shell, true, function (err, collection) {
             collection.msg = 'success'
