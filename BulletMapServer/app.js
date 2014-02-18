@@ -14,11 +14,13 @@ var server = new mongoLib.Server('localhost', 27017, {auto_reconnect: true});
 var client = new mongoLib.MongoClient(server);
 client.open(function(err, client){
     var db = client.db('bulletsDb');
-    var bulletsDb = require('./found_shells/bulletsdb')(db);
 
-    app.get('/bullet/:id', bulletsDb.findOnebullet);
-    app.get('/found_shells', bulletsDb.findShellLocations);
-    app.post('/found_shell',bulletsDb.addOneShellLocation);
+    var bulletInfo = require('./bullet_info')(db);
+    app.get('/bullet/:id', bulletInfo.findOnebullet);
+
+    var foundShells = require('./found_shells')(db);
+    app.get('/found_shells', foundShells.findShellLocations);
+    app.post('/found_shell',foundShells.addOneShellLocation);
 
     //app.get('/bullets', bulletsDb.findAll);
     //app.post('/bullet', bulletsDb.addOnebullet);
