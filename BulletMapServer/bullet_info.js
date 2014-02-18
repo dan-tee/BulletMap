@@ -25,7 +25,7 @@ module.exports = function(db){
         db.collection(bulletInfoCollection, function (err, collection) {
 
             collection.insert(bullet, true, function (err, collection) {
-                collection.msg = 'success'
+                collection.msg = 'success';
                 res.send(collection);
 
             });

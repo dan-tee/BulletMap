@@ -1,9 +1,9 @@
-var foudShellsCollection = 'found_shells';
+var foundShellsCollection = 'found_shells';
 
 module.exports = function(db){
     var found_shells = {};
     found_shells.findShellLocations = function (req, res) {
-        db.collection(foudShellsCollection, function (err, collection) {
+        db.collection(foundShellsCollection, function (err, collection) {
             collection.aggregate([
                 { $group: {_id: "$Origin", "Locations": {"$push": {"Longitude": "$longitude", "Latitude": "$latitude"}}}},
                 { $project: {"Origin": "$_id", "Locations": "$Locations"}}
@@ -24,10 +24,10 @@ module.exports = function(db){
     found_shells.addOneShellLocation = function (req, res) {
         var shell = req.body;
 
-        db.collection(foudShellsCollection, function (err, collection) {
+        db.collection(foundShellsCollection, function (err, collection) {
 
             collection.insert(shell, true, function (err, collection) {
-                collection.msg = 'success'
+                collection.msg = 'success';
                 res.send(collection);
 
             });
