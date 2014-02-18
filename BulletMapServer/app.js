@@ -12,20 +12,22 @@ app.configure(function () {
 
 var server = new mongoLib.Server('localhost', 27017, {auto_reconnect: true});
 var client = new mongoLib.MongoClient(server);
-client.open(function(err, client){
+client.open(createRoutes);
+
+http.createServer(app).listen(app.get('port'), function () {
+    console.log("Express server listening on port " + app.get('port'));
+});
+
+function createRoutes(err, client){
     var db = client.db('bulletsDb');
 
     var bulletInfo = require('./bullet_info')(db);
-    app.get('/bullet/:id', bulletInfo.findOnebullet);
+    app.get('/bullet/:id', bulletInfo.findOneBullet);
 
     var foundShells = require('./found_shells')(db);
     app.get('/found_shells', foundShells.findShellLocations);
     app.post('/found_shell',foundShells.addOneShellLocation);
 
     //app.get('/bullets', bulletsDb.findAll);
-    //app.post('/bullet', bulletsDb.addOnebullet);
-});
-
-http.createServer(app).listen(app.get('port'), function () {
-    console.log("Express server listening on port " + app.get('port'));
-});
+    //app.post('/bullet', bulletsDb.addOneBullet);
+}

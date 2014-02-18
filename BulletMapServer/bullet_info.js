@@ -10,7 +10,7 @@ module.exports = function(db){
         });
     };
 
-    bulletsDb.findOnebullet = function (req, res) {
+    bulletsDb.findOneBullet = function (req, res) {
         var id = req.params.id;
         db.collection(bulletInfoCollection, function (err, collection) {
             collection.findOne({'headstamp': id}, function (err, item) {
@@ -19,7 +19,7 @@ module.exports = function(db){
         });
     };
 
-    bulletsDb.addOnebullet = function (req, res) {
+    bulletsDb.addOneBullet = function (req, res) {
         var bullet = req.body;
 
         db.collection(bulletInfoCollection, function (err, collection) {
