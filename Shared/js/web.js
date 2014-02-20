@@ -1,66 +1,72 @@
-$(document).on('pagebeforeshow', '#bullet-source', function( ){
+(function(){
+    function bulletDataOrUnknowns(json) {
+        var bullet_data;
 
-    //TODO: refresh data on page for other than the first load
-
-    var found_data = $('#bullet-source').data("form");
-    console.log("search_data: ",found_data);
-
-    var url = server+"/bullet/" + found_data.headstamp;
-
-    var template = $("#bullet-source").html();
-    $.getJSON(url)
-        .always(function(json, textStatus) {
-
-            var bullet_data;
-            if (json.hasOwnProperty("_id")){
-                bullet_data = json;
-            } else {
-                bullet_data = {};
-                ["headstamp", "weapon", "manufacturer", "countryOfOrigin"].forEach(function(attr){
-                    bullet_data[attr] = "unkown";
-                });
-            }
-            found_data.Origin = bullet_data.countryOfOrigin;
-
-            //console.log("bullet_data: ", bullet_data);
-            //console.log("found_data: ", found_data);
-
-            var html = $.mustache(template,bullet_data);
-            $("#bullet-source").html(html);
-            $("#bullet-source").trigger('create');
-
-            $.post("/found_shell", found_data);
-        })
-
-    ;
-});
-
-$("#submit-search").on("click", function(event,data){
-    // Prevent the usual navigation behavior
-    event.preventDefault();
-
-    var url = '#bullet-source';
-
-    // get form data
-    var data = $("#bullet-search form :input").serializeObject();
-    $(url).data("form",data);
-
-    $.mobile.navigate(url);
-});
-
-$.fn.serializeObject = function()
-{
-    var o = {};
-    var a = this.serializeArray();
-    $.each(a, function() {
-        if (o[this.name] !== undefined) {
-            if (!o[this.name].push) {
-                o[this.name] = [o[this.name]];
-            }
-            o[this.name].push(this.value || '');
+        if (json.hasOwnProperty("_id")) {
+            bullet_data = json;
         } else {
-            o[this.name] = this.value || '';
+            bullet_data = {};
+            ["headstamp", "weapon", "manufacturer", "countryOfOrigin"].forEach(function (attr) {
+                bullet_data[attr] = "unkown";
+            });
         }
+        return bullet_data;
+    }
+
+    function renderBulletInfo(bullet_data) {
+        //console.log("bullet_data: ", bullet_data);
+        //console.log("found_data: ", found_data);
+
+        var bulletSourcePage = $("#bullet-source");
+        var template = bulletSourcePage.html();
+        var html = $.mustache(template, bullet_data);
+        bulletSourcePage.html(html);
+        bulletSourcePage.trigger('create');
+    }
+
+    function processBulletInfo(json, found_data) {
+        var bullet_data = bulletDataOrUnknowns(json);
+        renderBulletInfo(bullet_data);
+        found_data.Origin = bullet_data.countryOfOrigin;
+        $.post("/found_shell", found_data);
+    }
+
+    $(document).on('pagebeforeshow', '#bullet-source', function( ){
+        function onBulletInfo(json, textStatus){
+            processBulletInfo(json, found_data);
+        }
+
+        //TODO: refresh data on page for other than the first load
+        var found_data = $('#bullet-source').data("form");
+        var url = server+ "/bullet/" + found_data.headstamp;
+        $.getJSON(url).always(onBulletInfo);
     });
-    return o;
-};
+
+    function inputToObject(input)
+    {
+        var result = {};
+        var inputArray = input.serializeArray();
+
+        $.each(inputArray, function() {
+            result[this.name] = this.value || '';
+        });
+
+        return result;
+    };
+
+    function storeInput(url) {
+        var input = $("#bullet-search").find("form :input");
+        var dataObject = inputToObject(input);
+        $(url).data("form", dataObject);
+    }
+
+    $("#submit-search").on("click", function(event,data){
+        // Prevent the usual navigation behavior
+        event.preventDefault();
+        var url = '#bullet-source';
+        storeInput(url);
+        $.mobile.navigate(url);
+    });
+}());
+
+
