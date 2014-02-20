@@ -30,7 +30,7 @@ function paintForCountry(color, findings){
 }
 
 function createAndMarkMap(){
-    if (window.map && window.map instanceof OpenLayers.Map){
+    if (window.map && window.map instanceof L.Map){
         return;
     }
 

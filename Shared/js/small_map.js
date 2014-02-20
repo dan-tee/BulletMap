@@ -1,5 +1,5 @@
 function createSmallMap(){
-    if (window.small_map && window.small_map instanceof OpenLayers.Map){
+    if (window.small_map && window.small_map instanceof L.Map){
         return;
     }
 
