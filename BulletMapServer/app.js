@@ -10,6 +10,11 @@ app.configure(function () {
     app.use(express.static(__dirname + '/../Shared'));
 });
 
+app.all('*', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    next();
+});
+
 var server = new mongoLib.Server('localhost', 27017, {auto_reconnect: true});
 var client = new mongoLib.MongoClient(server);
 client.open(createRoutes);
