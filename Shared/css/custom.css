@@ -1,3 +1,10 @@
+/* Hide all content so that it is not shown when JavaScript is disabled.
+Then use JavaScript to show it.*/
+[data-role="page"]
+{
+    display: none;
+}
+
 #bullet-map .ui-content{
     /*color: #224;
     background-color: #eeeeff;*/
@@ -39,6 +46,13 @@
     right: 0;
     height: 100%;
     left: 0;;
+}
+
+#error-message {
+    border-color: #7E0000;
+    background-color: darkred;
+    color: #E8E8E8;
+    text-shadow: none;
 }
 
 
