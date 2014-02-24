@@ -16,15 +16,18 @@
         return bullet_data;
     }
 
+    // We have to build the page from the Moustache template before jQuery mobile's page change event.
+    // This is because jQM processes the raw html and shows its own enhanced version. So we pause
+    // the page change until we have the JSON.
+    // See http://demos.jquerymobile.com/1.1.1/docs/pages/page-dynamic.html
     function renderBulletInfo(bullet_data) {
-        //console.log("bullet_data: ", bullet_data);
-        //console.log("found_data: ", found_data);
-
+        var template = $("#bullet-source-template").html();
+        var bulletSourceContent = $.mustache(template, bullet_data);
         var bulletSourcePage = $("#bullet-source");
-        var template = bulletSourcePage.html();
-        var html = $.mustache(template, bullet_data);
-        bulletSourcePage.html(html);
+        bulletSourcePage.html(bulletSourceContent);
         bulletSourcePage.trigger('create');
+        $.mobile.loading('hide');
+        $.mobile.navigate('#bullet-source');
     }
 
     function processBulletInfo(json, found_data) {
@@ -35,29 +38,28 @@
     }
 
     function showError(jqXHR, status, error){
-        // delay popup until page is layed out for proper positioning.
-        $(document).on('pageshow', '#bullet-source', function(){
-            if (error) errorMessage = status + ", " + error;
-            else errorMessage = "Couldn't get bullet information from server";
+        $.mobile.loading('hide');
+        if (error) errorMessage = status + ", " + error;
+        else errorMessage = "Couldn't get bullet information from server. Maybe the server is unavailable.";
 
-            var errorDiv = $("#error-message");
-            errorDiv.empty();
-            errorDiv.append("<p>" + errorMessage + "</p>");
-            errorDiv.popup("open");
-        });
+        var errorDiv = $("#error-message");
+        errorDiv.empty();
+        errorDiv.append("<p>" + errorMessage + "</p>");
+        errorDiv.popup("open");
     }
 
-    $(document).on('pagebeforeshow', '#bullet-source', function( ){
+    function getAndRenderBulletInfo(){
         function onBulletInfo(json){
-            processBulletInfo(json, found_data);
+            processBulletInfo(json, inputObject);
         }
 
-        //TODO: refresh data on page for other than the first load
-        var found_data = $('#bullet-source').data("form");
-        var url = server + "/bullet/" + found_data.headstamp;
+        var input = $("#bullet-search").find("form :input");
+        var inputObject = inputToObject(input);
+
+        var url = server + "/bullet/" + inputObject.headstamp;
         $.getJSON(url).done(onBulletInfo)
                       .fail(showError);
-    });
+    }
 
     function inputToObject(input)
     {
@@ -71,18 +73,11 @@
         return result;
     }
 
-    function storeInput(url) {
-        var input = $("#bullet-search").find("form :input");
-        var dataObject = inputToObject(input);
-        $(url).data("form", dataObject);
-    }
-
     $("#submit-search").on("click", function(event){
-        // Prevent the usual navigation behavior
+        // prevent the usual form blanking behaviour
         event.preventDefault();
-        var url = '#bullet-source';
-        storeInput(url);
-        $.mobile.navigate(url);
+        $.mobile.loading('show');
+        getAndRenderBulletInfo();
     });
 }());
 

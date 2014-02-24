@@ -34,6 +34,9 @@
         <h1>Bullet Map</h1>
     </div>
 
+    <div data-role="popup" id="error-message">
+    </div>
+
     <div role="main" class="ui-content">
         <h2>Report Finding</h2>
         <form>
@@ -68,7 +71,7 @@
             <button id="submit-search" class="ui-shadow ui-btn ui-corner-all">Submit</button>
         </form>
     </div>
-    <div data-role="footer">
+    <div data-role="header">
          <div data-role="navbar">
             <ul>
                 <li><a href="#bullet-search" data-icon="grid" class="ui-btn-active">Report</a></li>
@@ -96,7 +99,7 @@
         <div id="map"></div>
         <div id="paneldiv" class="olControlNavToolbar"></div>
     </div>
-    <div data-role="footer">
+    <div data-role="header">
         <div data-role="navbar">
             <ul>
                 <li><a href="#bullet-search" data-icon="grid">Report</a></li>
@@ -111,12 +114,11 @@
 </div>
 
 <div data-role="page" id="bullet-source">
+</div>
+<div data-role="page" id="bullet-source-template">
 
     <div data-role="header">
         <h1>Bullet Map</h1>
-    </div>
-
-    <div data-role="popup" id="error-message">
     </div>
 
     <div role="main" class="ui-content">
@@ -137,7 +139,7 @@
             </tr>
         </table>
     </div>
-    <div data-role="footer">
+    <div data-role="header">
         <div data-role="navbar">
             <ul>
                 <li><a href="#bullet-search" data-icon="grid" class="ui-btn-active">Search</a></li>
