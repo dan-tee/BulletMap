@@ -38,7 +38,10 @@
     }
 
     function onError(jqXHR, status, error){
-        if (jqXHR.status === 404) message = "Couldn't find headstamp in database. Please check if it is correct.";
+        if (jqXHR.status === 404){
+            message = "Couldn't find headstamp in database. Please check if it is correct.";
+            $("#serial-number").addClass("error");
+        }
         else if (error) message = status + ", " + error;
         else message = "Couldn't get bullet information from server. Maybe the server is unavailable.";
 
