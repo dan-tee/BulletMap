@@ -1,5 +1,6 @@
 (function(){
-    // use JavaScript to unhide content.
+    // Without JavaScript only a message is shown, but all content is hidden.
+    // Here we use JavaScript to show the content.
     $('[date-role="page"]').css({display: 'block'});
 
     function bulletDataOrUnknowns(json) {
@@ -17,8 +18,7 @@
     }
 
     // We have to build the page from the Moustache template before jQuery mobile's page change event.
-    // This is because jQM processes the raw html and shows its own enhanced version. So we pause
-    // the page change until we have the JSON.
+    // This is because jQM processes the raw html and adds its own enhanced version to the actual DOM.
     // See http://demos.jquerymobile.com/1.1.1/docs/pages/page-dynamic.html
     function renderBulletInfo(bullet_data) {
         var template = $("#bullet-source-template").html();
@@ -37,15 +37,34 @@
         $.post(server + "/found_shell", found_data);
     }
 
-    function showError(jqXHR, status, error){
-        $.mobile.loading('hide');
-        if (error) errorMessage = status + ", " + error;
-        else errorMessage = "Couldn't get bullet information from server. Maybe the server is unavailable.";
+    function onError(jqXHR, status, error){
+        if (jqXHR.status === 404) message = "Couldn't find headstamp in database. Please check if it is correct.";
+        else if (error) message = status + ", " + error;
+        else message = "Couldn't get bullet information from server. Maybe the server is unavailable.";
 
+        showError(message);
+
+        $.mobile.loading('hide');
+    }
+
+    function showError(message){
         var errorDiv = $("#error-message");
         errorDiv.empty();
-        errorDiv.append("<p>" + errorMessage + "</p>");
+        errorDiv.append("<p>" + message + "</p>");
         errorDiv.popup("open");
+    }
+
+    function validateInput(input){
+        if (input.headstamp || input.photo){
+            $("#serial-number").removeClass("error");
+            $("#photo-file").removeClass("error");
+            return true;
+        }
+
+        showError("Please give either a headstamp or a photo.");
+        $("#serial-number").addClass("error");
+        $("#photo-file").addClass("error");
+        return false;
     }
 
     function getAndRenderBulletInfo(){
@@ -56,9 +75,12 @@
         var input = $("#bullet-search").find("form :input");
         var inputObject = inputToObject(input);
 
+        if (!validateInput(inputObject)) return;
+
         var url = server + "/bullet/" + inputObject.headstamp;
+        $.mobile.loading('show');
         $.getJSON(url).done(onBulletInfo)
-                      .fail(showError);
+                      .fail(onError);
     }
 
     function inputToObject(input)
@@ -76,7 +98,6 @@
     $("#submit-search").on("click", function(event){
         // prevent the usual form blanking behaviour
         event.preventDefault();
-        $.mobile.loading('show');
         getAndRenderBulletInfo();
     });
 }());

@@ -18,6 +18,7 @@ Then use JavaScript to show it.*/
 
 #location {
     width: 100%;
+    margin-bottom: 10px;
 }
 
 #location td{
@@ -26,8 +27,8 @@ Then use JavaScript to show it.*/
 }
 
 #small-map{
-    height: 200px;
-    width: 300px;
+    height: 250px;
+    width: 350px;
     border: 1px solid grey;
 }
 
@@ -55,5 +56,11 @@ Then use JavaScript to show it.*/
     text-shadow: none;
 }
 
+input.error {
+    border: 1px solid #C00;
+}
 
+label {
+    margin-top: 20px;
+}
 
