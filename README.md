@@ -16,6 +16,7 @@ We will have a NodeJs backend with a json API, a web frontend and mobile apps us
 
 Links
 =====
+http://cartridgecollectors.org/?page=headstampcodes
 
 http://gundata.org/bullet-database/
 
