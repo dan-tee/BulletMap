@@ -14,7 +14,11 @@ module.exports = function(db){
         var id = req.params.id;
         db.collection(bulletInfoCollection, function (err, collection) {
             collection.findOne({'headstamp': id}, function (err, item) {
-                res.send(item);
+                if (item) res.send(item);
+                else {
+                    res.status(404);
+                    res.send();
+                }
             });
         });
     };
