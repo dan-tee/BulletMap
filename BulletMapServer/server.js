@@ -24,7 +24,7 @@ http.createServer(app).listen(app.get('port'), function () {
 });
 
 function createRoutes(err, client){
-    var db = client.db('bulletsDb');
+    var db = client.db('bullet_map');
 
     var bulletInfo = require('./bullet_info')(db);
     app.get('/bullet/:id', bulletInfo.findOneBullet);
