@@ -28,7 +28,7 @@ http://www.worldwithjan.com/post/74585253223/focusing-ukraine-armour-piercing-sh
 
 License
 =======
-BilletMap is free software. You can redistribute it and/or modify
+BulletMap is free software. You can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
 the Free Software Foundation, version 2. 
 
