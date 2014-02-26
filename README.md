@@ -25,3 +25,13 @@ http://nazarian.no/def.asp
 http://www.shootforum.com/forum/bulletdb.html
 
 http://www.worldwithjan.com/post/74585253223/focusing-ukraine-armour-piercing-shotgun-projectiles
+
+License
+=======
+BilletMap is free software. You can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, version 3. 
+
+It comes WITHOUT ANY WARRANTY. Without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
