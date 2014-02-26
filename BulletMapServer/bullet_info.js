@@ -1,4 +1,4 @@
-var bulletInfoCollection = 'bullets';
+var bulletInfoCollection = 'bullet_info';
 
 module.exports = function(db){
     var bulletsDb = {};
@@ -11,7 +11,7 @@ module.exports = function(db){
     };
 
     bulletsDb.findOneBullet = function (req, res) {
-        var id = req.params.id;
+        var id = req.params.id.toLowerCase();
         db.collection(bulletInfoCollection, function (err, collection) {
             collection.findOne({'headstamp': id}, function (err, item) {
                 if (item) res.send(item);
