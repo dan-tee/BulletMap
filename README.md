@@ -16,7 +16,7 @@ We will have a NodeJs backend using MongoDB and offering a json API, a web front
 Installation Guide
 ==================
 1. Install [node.js](http://nodejs.org) and [MongoDB](http://www.mongodb.org/).
-2. Download this repository. All shell commands will asume your are in the base directory of this repo.
+2. Download this repository. All shell commands will assume your are in the base directory of this repo.
 3. Import ./Shared/test/bullet\_info.json into the DB **bullet\_map** and collection **bullet\_info**.
  ```
  mongoimport --db bullet_map --collection bullet_info --file ./Shared/test/bullet_info.json
@@ -29,6 +29,7 @@ Installation Guide
  ```
  http://localhost:3000/
  ```
+6. Create Phonegap/Cordova app (http://docs.phonegap.com/, http://cordova.apache.org/) and use Shared as the app's www-directory.
 
 Links
 =====
