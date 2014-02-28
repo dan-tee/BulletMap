@@ -1,3 +1,8 @@
+// changing this breaks existing installations. On change update
+// the installation guide.
+var DB_NAME = 'bullet_map';
+var DB_PORT = 27017;
+
 var express = require('express')
   , http = require('http')
   , mongoLib = require('mongodb');
@@ -15,7 +20,7 @@ app.all('*', function(req, res, next) {
     next();
 });
 
-var server = new mongoLib.Server('localhost', 27017, {auto_reconnect: true});
+var server = new mongoLib.Server('localhost', DB_PORT, {auto_reconnect: true});
 var client = new mongoLib.MongoClient(server);
 client.open(createRoutes);
 
@@ -24,7 +29,8 @@ http.createServer(app).listen(app.get('port'), function () {
 });
 
 function createRoutes(err, client){
-    var db = client.db('bullet_map');
+
+    var db = client.db(DB_NAME);
 
     var bulletInfo = require('./bullet_info')(db);
     app.get('/bullet/:id', bulletInfo.findOneBullet);

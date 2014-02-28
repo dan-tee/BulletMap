@@ -1,9 +1,11 @@
-var foundShellsCollection = 'found_shells';
+// changing this breaks existing installations. On change update
+// the installation guide.
+var COLLECTION_NAME = 'found_shells';
 
 module.exports = function(db){
     var found_shells = {};
     found_shells.findShellLocations = function (req, res) {
-        db.collection(foundShellsCollection, function (err, collection) {
+        db.collection(COLLECTION_NAME, function (err, collection) {
             collection.aggregate([
                 { $group: {_id: "$Origin", "Locations": {"$push": {"Longitude": "$longitude", "Latitude": "$latitude"}}}},
                 { $project: {"Origin": "$_id", "Locations": "$Locations"}}
@@ -24,7 +26,7 @@ module.exports = function(db){
     found_shells.addOneShellLocation = function (req, res) {
         var shell = req.body;
 
-        db.collection(foundShellsCollection, function (err, collection) {
+        db.collection(COLLECTION_NAME, function (err, collection) {
 
             collection.insert(shell, true, function (err, collection) {
                 collection.msg = 'success';

@@ -1,9 +1,11 @@
-var bulletInfoCollection = 'bullet_info';
+// changing this breaks existing installations. On change update
+// the installation guide.
+var COLLECTION_NAME = 'bullet_info';
 
 module.exports = function(db){
     var bulletsDb = {};
     bulletsDb.findAll = function (req, res) {
-        db.collection(bulletInfoCollection, function (err, collection) {
+        db.collection(COLLECTION_NAME, function (err, collection) {
             collection.find().toArray(function (err, items) {
                 res.send(items);
             });
@@ -12,7 +14,7 @@ module.exports = function(db){
 
     bulletsDb.findOneBullet = function (req, res) {
         var id = req.params.id.toLowerCase();
-        db.collection(bulletInfoCollection, function (err, collection) {
+        db.collection(COLLECTION_NAME, function (err, collection) {
             collection.findOne({'headstamp': id}, function (err, item) {
                 if (item) res.send(item);
                 else {
@@ -26,7 +28,7 @@ module.exports = function(db){
     bulletsDb.addOneBullet = function (req, res) {
         var bullet = req.body;
 
-        db.collection(bulletInfoCollection, function (err, collection) {
+        db.collection(COLLECTION_NAME, function (err, collection) {
 
             collection.insert(bullet, true, function (err, collection) {
                 collection.msg = 'success';
