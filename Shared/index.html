@@ -38,7 +38,7 @@
     </div>
 
     <div role="main" class="ui-content">
-        <h2>Report Finding</h2>
+        <h2>Search for Bullet info</h2>
         <form>
             <label for="serial-number">Headstamp:</label>
             <input name="headstamp" id="serial-number" value="" type="text">
@@ -67,15 +67,14 @@
 
             <label for="photo-file">Photo:</label>
             <input name="photo-file" id="photo-file" value="" type="file" accept="image/*">
-
-            <button id="submit-search" class="ui-shadow ui-btn ui-corner-all">Submit</button>
         </form>
+        <button id="submit-search" data-icon="search" class="ui-shadow ui-corner-all">Search</button>
     </div>
     <div data-role="header">
          <div data-role="navbar">
             <ul>
-                <li><a href="#bullet-search" data-icon="grid" class="ui-btn-active">Report</a></li>
-                <li><a href="#bullet-map" data-icon="star">Map</a></li>
+                <li><a href="#bullet-search" data-icon="search" class="ui-btn-active">Search</a></li>
+                <li><a href="#bullet-map" data-icon="location">Map</a></li>
                 <!--
                 <li><a href="#bullet-input" data-icon="gear">Input</a></li>
                 -->
@@ -102,8 +101,8 @@
     <div data-role="header">
         <div data-role="navbar">
             <ul>
-                <li><a href="#bullet-search" data-icon="grid">Report</a></li>
-                <li><a href="#bullet-map" data-icon="star" class="ui-btn-active">Map</a></li>
+                <li><a href="#bullet-search" data-icon="search">Search</a></li>
+                <li><a href="#bullet-map" data-icon="location" class="ui-btn-active">Map</a></li>
                 <!--
                 <li><a href="#bullet-input" data-icon="gear">Input</a></li>
                 -->
@@ -126,31 +125,27 @@
         <h2>Bullet Info</h2>
         <table>
             <tr>
-                <td>Weapon</td>
-                <td>{{weapon}}</td>
-            </tr>
-            <tr>
-                <td>Manufacturer</td>
-                <td>{{manufacturer}}</td>
-            </tr>
-            <tr>
-                <td>Country of Origin</td>
+                <td>Country of Origin: </td>
                 <td>{{countryOfOrigin}}</td>
             </tr>
+            <tr>
+                <td>Additional Information: </td>
+                <td>{{comment}}</td>
+            </tr>
         </table>
+        <button data-role="button" data-icon="cloud" id="upload">Upload finding</button>
     </div>
     <div data-role="header">
         <div data-role="navbar">
             <ul>
-                <li><a href="#bullet-search" data-icon="grid" class="ui-btn-active">Search</a></li>
-                <li><a href="#bullet-map" data-icon="star">Map</a></li>
+                <li><a href="#bullet-search" data-icon="search" class="ui-btn-active">Search</a></li>
+                <li><a href="#bullet-map" data-icon="location">Map</a></li>
                 <!--
                 <li><a href="#bullet-input" data-icon="gear">Input</a></li>
                 -->
             </ul>
         </div>
     </div>
-
 </div>
 </body>
 </html>
