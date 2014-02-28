@@ -8,11 +8,27 @@ Project Structure
 
 This repository will host the server and the mobile app. There will be one folder for each and a folder for the shared HTML and JS.
 
-
 Architecture
 ============
 
-We will have a NodeJs backend with a json API, a web frontend and mobile apps using PhoneGap. For HTML templates, we will use Moustache.
+We will have a NodeJs backend using MongoDB and offering a json API, a web frontend and mobile apps using PhoneGap. For HTML templates we will use Moustache.
+
+Installation Guide
+==================
+1. Install [node.js](http://nodejs.org) and [MongoDB](http://www.mongodb.org/).
+2. Download this repository. All shell commands will asume your are in the base directory of this repo.
+3. Import ./Shared/test/bullet\_info.json into the DB **bullet\_map** and collection **bullet\_info**.
+ ```
+ mongoimport --db bullet_map --collection bullet_info --file ./Shared/test/bullet_info.json
+ ```   
+4. Run the server  
+ ```
+ node ./BulletMapServer/server.js
+ ```
+5. Access page via your browser by entering the URL  
+ ```
+ http://localhost:3000/
+ ```
 
 Links
 =====
