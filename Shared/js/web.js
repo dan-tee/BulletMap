@@ -98,24 +98,20 @@
         return result;
     }
 
-    // Wait with event bindings until page is shown, so that the button exists in the DOM.
+    // This binds to all object with the right id, even if they are constructed later.
     // see http://stackoverflow.com/questions/16375975/jquery-click-event-not-firing-in-jquerymobile
-    $("#bullet-search").on("pagebeforeshow", function(){
-        $("#submit-search").on("click", function(event){
-            // prevent the usual form blanking behaviour
-            event.preventDefault();
-            getAndRenderBulletInfo();
-        });
+    $(document).on('click', '#submit-search', function(event){
+        // prevent the usual form blanking behaviour
+        event.preventDefault();
+        getAndRenderBulletInfo();
     });
 
-    $("#bullet-source").on("pagebeforeshow", function(){
-        $("#upload").on("click", function(){
-            var found_data = $.data(document.body, "found_data");
-            if (found_data){
-                $.post(server + "/found_shell", found_data);
-                $.mobile.navigate('#bullet-search');
-            }
-        });
+    $(document).on('click', '#upload', function(){
+        var found_data = $.data(document.body, "found_data");
+        if (found_data){
+            $.post(server + "/found_shell", found_data);
+            $.mobile.navigate('#bullet-map');
+        }
     });
 }());
 
