@@ -68,3 +68,17 @@ label {
     margin-top: 60px;
 }
 
+.headline-background {
+    background: #FF0 url(../images/amnesty_logo.gif) no-repeat;
+    background-size: contain;
+    text-align: center;
+    padding: 7px;
+    border-bottom: 1px solid #ddd;
+    font-size: 8px;
+    color: #222;
+    text-shadow: 0 0;
+}
+
+.headline-background h1{
+    margin: 0;
+}
