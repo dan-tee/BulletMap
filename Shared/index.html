@@ -6,6 +6,9 @@
     <title>Bullet Map</title>
     <link rel="stylesheet" href="libs/jquery.mobile-1.4.0.min.css" />
     <link rel="stylesheet" href="libs/leaflet.css" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+    <![endif]-->
     <link rel="stylesheet" href="css/custom.css" />
     <script type="text/javascript" src="js/cordova.js"></script>
     <script src="libs/jquery.min.js" ></script>
@@ -13,6 +16,7 @@
     <script src="libs/jquery.mustache.js"></script>
     <script src="libs/tinycolor-min.js"></script>
     <script src="libs/leaflet-src.js"></script>
+    <script src="http://beta.mapquestapi.com/sdk/leaflet/v0.1/mq-map.js?key=Fmjtd%7Cluur210ynq%2Ca0%3Do5-90yaqw"></script>
     <script src="js/map_util.js"></script>
     <script type="text/javascript">
         var server = "http://localhost:3000";
@@ -39,7 +43,7 @@
     </div>
 
     <div role="main" class="ui-content">
-        <h2>Search for Bullet info</h2>
+        <h2>Search for bullet info</h2>
         <form>
             <label for="serial-number">Headstamp:</label>
             <input name="headstamp" id="serial-number" value="" type="text">
