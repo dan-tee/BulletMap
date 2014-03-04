@@ -6,6 +6,7 @@
     <title>Bullet Map</title>
     <link rel="stylesheet" href="libs/jquery.mobile-1.4.0.min.css" />
     <link rel="stylesheet" href="libs/leaflet.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,300' rel='stylesheet' type='text/css'>
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
     <![endif]-->
@@ -33,6 +34,7 @@
     </h1>
 </noscript>
 
+<!--------------------------- HOME ------------------------------------>
 <div data-role="page" id="home">
     <div data-role="header">
         <div class="headline-background">
@@ -40,23 +42,46 @@
         </div>
         <div data-role="navbar">
             <ul>
-                <li><a href="home" data-icon="home" class="ui-btn-active">Home</a></li>
+                <li><a href="#home" data-icon="home" class="ui-btn-active">Home</a></li>
                 <li><a href="#bullet-search" data-icon="search">Search</a></li>
                 <li><a href="#bullet-map" data-icon="location">Map</a></li>
-                <!--
-                <li><a href="#bullet-input" data-icon="gear">Input</a></li>
-                -->
             </ul>
         </div>
     </div>
 
     <div role="main" class="ui-content">
-        <p>Welocome to Bullet Map.</p>
-        <img id="blazer" src="images/blazer.jpg" alt="S&W Blazer headstamp" width="100">
-        </img>
-    </div>
+        <div id="callout-background">
+            <div id="callout">
+                <h1>
+                    Where are bullets coming from?
+                </h1>
+                <h2>
+                    Help us find out.
+                </h2>
+            </div>
+        </div>
+
+        <p>
+            Bullet Map offers two services. Bullet shell identification and visualization
+            of bullet shell findings on a map.
+        </p>
+        <p>
+            If you find a bullet shell, Bullet Map can help you identify it. On the back of the
+            shell you will find an engraving, the so called headstamp. Bullet Map has a database
+            of headstamps and provides you with information like the country, where the bullet
+            has been produced.
+        </p>
+        <p>
+            You can post bullet findings to our findings database. If enough people in a conflict
+            region choose to upload their findings, our map will indicate where the weapons used
+            in the conflict are coming from.
+        </p>
+
+        <img id="arms-trade" src="images/arms-trade.jpg" alt="74% of ">
+     </div>
 </div>
 
+<!--------------------------- Search ------------------------------------>
 <div data-role="page" id="bullet-search">
     <div data-role="popup" id="error-message">
     </div>
@@ -70,9 +95,6 @@
                 <li><a href="#home" data-icon="home">Home</a></li>
                 <li><a href="#bullet-search" data-icon="search" class="ui-btn-active">Search</a></li>
                 <li><a href="#bullet-map" data-icon="location">Map</a></li>
-                <!--
-                <li><a href="#bullet-input" data-icon="gear">Input</a></li>
-                -->
             </ul>
         </div>
     </div>
@@ -107,6 +129,7 @@
     </div>
 </div>
 
+<!--------------------------- Map ------------------------------------>
 <div data-role="page" id="bullet-map">
 
     <div data-role="header">
@@ -118,9 +141,6 @@
                 <li><a href="#home" data-icon="home">Home</a></li>
                 <li><a href="#bullet-search" data-icon="search">Search</a></li>
                 <li><a href="#bullet-map" data-icon="location" class="ui-btn-active">Map</a></li>
-                <!--
-                <li><a href="#bullet-input" data-icon="gear">Input</a></li>
-                -->
             </ul>
         </div>
     </div>
@@ -135,6 +155,7 @@
     </div>
 </div>
 
+<!--------------------------- Bullet Info ------------------------------------>
 <div data-role="page" id="bullet-source">
 </div>
 <div data-role="page" id="bullet-source-template">
@@ -147,10 +168,6 @@
             <ul>
                 <li><a href="#home" data-icon="home">Home</a></li>
                 <li><a href="#bullet-search" data-icon="search" class="ui-btn-active">Search</a></li>
-                <li><a href="#bullet-map" data-icon="location">Map</a></li>
-                <!--
-                <li><a href="#bullet-input" data-icon="gear">Input</a></li>
-                -->
             </ul>
         </div>
     </div>

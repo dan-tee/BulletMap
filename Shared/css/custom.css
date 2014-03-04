@@ -5,6 +5,60 @@ Then use JavaScript to show it.*/
     display: none;
 }
 
+#home .ui-content{
+    padding: 0 !important;
+}
+
+#home #callout-background{
+    background: url(../images/used_bullets.jpg) no-repeat top center;
+    margin-bottom: 40px;
+}
+
+#home #callout{
+    padding-top: 40%;
+    padding-left: 10%;
+    padding-bottom: 10%;
+}
+
+#home #callout h1{
+    color: white;
+    font-size: 44px;
+    font-weight: 700;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-shadow: 0 0;
+    margin-bottom: 5px;
+}
+
+#home #callout h2{
+    color: white;
+    font-size: 35px;
+    font-weight: 300;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-shadow: 0 0;
+    margin-top: 5px;
+}
+
+#blazer{
+    width: 80px;
+    margin: 20px;
+    margin-right: 10%;
+    border-radius: 50px;
+    float: right;
+}
+
+#home p{
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 18px;
+    font-family: Georgia, Serif;
+    line-height: 1.5;
+}
+
+#arms-trade{
+    margin-top: 10%;
+
+}
+
 #bullet-search .ui-content{
     padding: 0 !important;
     top: 94px !important;
@@ -98,8 +152,4 @@ label {
 
 .headline-background h1{
     margin: 0;
-}
-
-#blazer{
-    border-radius: 50px;
 }
