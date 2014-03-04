@@ -52,6 +52,8 @@
 
     <div role="main" class="ui-content">
         <p>Welocome to Bullet Map.</p>
+        <img id="blazer" src="images/blazer.jpg" alt="S&W Blazer headstamp" width="100">
+        </img>
     </div>
 </div>
 
@@ -76,37 +78,32 @@
     </div>
 
     <div role="main" class="ui-content">
-        <h2>Search for bullet info</h2>
-        <form>
-            <label for="serial-number">Headstamp:</label>
-            <input name="headstamp" id="serial-number" value="" type="text">
+        <table id="input-columns">
+            <tbody>
+            <tr>
+                <td class="first-column">
+                    <h2>Search for bullet info</h2>
+                    <form>
+                        <label for="serial-number">Headstamp</label>
+                        <input name="headstamp" id="serial-number" value="" type="text">
 
-            <table id="location">
-                <tbody>
-                    <tr>
-			            <td>
-                            <div id="small-map"></div>
-                        </td>
-                        <td>
-                            <!--
-                            <label for="bullet-location">Found Location:</label>
-                            <input name="bullet-location" id="bullet-location" value="" type="text">
-                            -->
+                        <label for="latitude">Latitude</label>
+                        <input name="latitude" id="latitude" value="" type="text">
 
-                            <label for="latitude">Latitude</label>
-                            <input name="latitude" id="latitude" value="" type="text">
+                        <label for="longitude">Longitude</label>
+                        <input name="longitude" id="longitude" value="" type="text">
 
-                            <label for="longitude">Longitude</label>
-                            <input name="longitude" id="longitude" value="" type="text">
-                        </td>                       
-                    </tr>
-                </tbody>
-            </table>
-
-            <label for="photo-file">Photo:</label>
-            <input name="photo-file" id="photo-file" value="" type="file" accept="image/*">
-        </form>
-        <button id="submit-search" data-icon="search" class="ui-shadow ui-corner-all">Search</button>
+                        <label for="photo-file">Photo:</label>
+                        <input name="photo-file" id="photo-file" value="" type="file" accept="image/*">
+                    </form>
+                    <button id="submit-search" data-icon="search" class="ui-shadow ui-corner-all">Search</button>
+                </td>
+                <td class="second-column">
+                    <div id="small-map" class="maps"></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 
@@ -133,7 +130,7 @@
             <h3>Origin Colors</h3>
             <ul></ul>
     	</div>
-        <div id="map"></div>
+        <div id="map" class="maps"></div>
         <div id="paneldiv" class="olControlNavToolbar"></div>
     </div>
 </div>

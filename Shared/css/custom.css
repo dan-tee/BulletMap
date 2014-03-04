@@ -5,9 +5,9 @@ Then use JavaScript to show it.*/
     display: none;
 }
 
-#bullet-map .ui-content{
-    /*color: #224;
-    background-color: #eeeeff;*/
+#bullet-search .ui-content{
+    padding: 0 !important;
+    top: 94px !important;
 }
 
 #legend{
@@ -16,36 +16,53 @@ Then use JavaScript to show it.*/
     padding-left: 10px;
 }
 
-#location {
-    width: 100%;
-    margin-bottom: 10px;
+#bullet-search {
+    padding: 0;
 }
 
-#location td{
+#input-columns {
+    width: 100%;
+    border-spacing: 0;
+}
+
+#input-columns .first-column {
+    width: 33.4%;
+    padding: 10px;
     vertical-align: top;
-    width: 50%;
+}
+
+#input-columns .second-column {
+    padding: 0;
 }
 
 #small-map{
-    height: 300px;
-    width: 400px;
-    border: 1px solid grey;
+    margin: 0;
+    border: 1px solid #aaa;
+    height: 500px;
+}
+
+#bullet-map .ui-content{
+    padding: 0;
 }
 
 #map{
-    background-color: #fff;
     margin-right: 150px;
-    width: auto;
-    height: 400px;
-    overflow: hidden;
-    border: 1px solid grey;
+    height: 500px;
+}
+
+.maps:after {
+    content: '';
+    position: absolute;
+    box-shadow: inset 0 0 5px #666;
+    width:100%;
+    height:100%;
+    display:block;
+    opacity: 0.7;
 }
 
 .ui-content {
-    position: absolute;
     top: 103px;
     right: 0;
-    height: 100%;
     left: 0;;
 }
 
@@ -69,7 +86,7 @@ label {
 }
 
 .headline-background {
-    background: #FF0 url(../images/amnesty_logo.gif) no-repeat;
+    background: #FE0 url(../images/amnesty_logo.jpg) no-repeat;
     background-size: contain;
     text-align: center;
     padding: 7px;
@@ -81,4 +98,8 @@ label {
 
 .headline-background h1{
     margin: 0;
+}
+
+#blazer{
+    border-radius: 50px;
 }
