@@ -113,6 +113,12 @@
             $.mobile.navigate('#bullet-map');
         }
     });
+
+    $(document).on('click', '#home-carat', function(){
+        $('html, body').animate({
+            scrollTop: $('#text-anchor').offset().top
+        });
+    })
 }());
 
 

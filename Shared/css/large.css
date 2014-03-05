@@ -1,0 +1,17 @@
+#home #callout-background{
+    background-size: 100% !important;
+}
+
+#home #callout{
+    padding-top: 30%;
+    padding-left: 10%;
+    padding-bottom: 10%;
+}
+
+#home #callout h1{
+    font-size: 60px;
+}
+
+#home #callout h2{
+    font-size: 50px;
+}
