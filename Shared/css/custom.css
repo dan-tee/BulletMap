@@ -17,6 +17,11 @@ Then use JavaScript to show it.*/
     margin-bottom: 40px;
 }
 
+#home #callout{
+    padding-left: 10%;
+    padding-bottom: 10%;
+}
+
 #home #callout h1{
     color: white;
     font-weight: 700;
@@ -34,8 +39,7 @@ Then use JavaScript to show it.*/
 }
 
 #home-carat{
-    display:block;
-    text-align:center
+    margin-left: 2px;
 }
 
 #text-anchor{
@@ -53,7 +57,7 @@ Then use JavaScript to show it.*/
 }
 
 #arms-trade{
-    margin-top: 10%;
+    margin-top: 8%;
     width:100%;
 }
 
