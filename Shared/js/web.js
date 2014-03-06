@@ -114,7 +114,7 @@
         }
     });
 
-    $(document).on('click', '#home-carat', function(){
+    $(document).on('click', '#home-carat-a', function(){
         $('html, body').animate({
             scrollTop: $('#text-anchor').offset().top
         });
