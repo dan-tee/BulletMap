@@ -1,8 +1,4 @@
 (function(){
-    // Without JavaScript only a message is shown, but all content is hidden.
-    // Here we use JavaScript to show the content.
-    $('[date-role="page"]').css({display: 'block'});
-
     function bulletDataOrUnknowns(json) {
         var bullet_data;
 
@@ -75,15 +71,16 @@
             processBulletInfo(json, inputObject);
         }
 
-        var input = $("#page-post").find("form :input");
+        var input = $('#page-post').find('form :input');
         var inputObject = inputToObject(input);
 
         if (!validateInput(inputObject)) return;
 
-        var url = server + "/bullet/" + inputObject.headstamp;
-        $.mobile.loading('show');
-        $.getJSON(url).done(onBulletInfo)
-                      .fail(onError);
+        $.post(server + '/found_shell', inputObject);
+
+        $.mobile.navigate('#page-map');
+        // clear the page
+        location.reload();
     }
 
     function inputToObject(input)
@@ -100,17 +97,21 @@
 
     // This binds to all object with the right id, even if they are constructed later.
     // see http://stackoverflow.com/questions/16375975/jquery-click-event-not-firing-in-jquerymobile
-    $(document).on('click', '#submit-search', function(event){
+    $(document).on('click', '#btn-post', function(event){
         // prevent the usual form blanking behaviour
         event.preventDefault();
         getAndRenderBulletInfo();
     });
 
-    $(document).on('click', '#upload', function(){
+    $(document).on('click', '#btn-search', function(){
+        var url = server + "/bullet/" + inputObject.headstamp;
+        $.mobile.loading('show');
+        $.getJSON(url).done(onBulletInfo)
+                      .fail(onError);
+
         var found_data = $.data(document.body, "found_data");
         if (found_data){
-            $.post(server + "/found_shell", found_data);
-            $.mobile.navigate('#page-map');
+
         }
     });
 

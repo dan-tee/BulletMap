@@ -22,7 +22,7 @@
     <script type="text/javascript">
         var server = "http://localhost:3000";
     </script>
-    <script src="js/web.js" defer></script>
+    <script src="js/click_handlers.js" defer></script>
     <script src="js/small_map.js" defer></script>
     <script src="js/map_with_markers.js" defer></script>
     </head>
@@ -44,7 +44,7 @@
             <ul>
                 <li><a href="#page-home" data-icon="home" class="ui-state-persist">Home</a></li>
                 <li><a href="#page-search" data-icon="search">Search</a></li>
-                <li><a href="#page-post" data-icon="arrow-u">Post</a></li>
+                <li><a href="#page-post" data-icon="plus">Post</a></li>
                 <li><a href="#page-map" data-icon="location">Map</a></li>
             </ul>
         </div>
@@ -95,16 +95,13 @@
             <ul>
                 <li><a href="#page-home" data-icon="home">Home</a></li>
                 <li><a href="#page-search" data-icon="search" class="ui-state-persist">Search</a></li>
-                <li><a href="#page-post" data-icon="arrow-u">Post</a></li>
+                <li><a href="#page-post" data-icon="plus">Post</a></li>
                 <li><a href="#page-map" data-icon="location">Map</a></li>
             </ul>
         </div>
     </div>
 </div>
 <div data-role="page" id="page-search-template">
-
-
-
     <div role="main" class="ui-content">
 
         <h2>Bullet Info</h2>
@@ -118,7 +115,7 @@
                 <td>{{comment}}</td>
             </tr>
         </table>
-        <button data-role="button" data-icon="cloud" id="upload">Upload finding</button>
+        <button data-role="button" data-icon="search" id="btn-search">Search</button>
     </div>
 </div>
 
@@ -135,7 +132,7 @@
             <ul>
                 <li><a href="#page-home" data-icon="home">Home</a></li>
                 <li><a href="#page-search" data-icon="search">Search</a></li>
-                <li><a href="#page-post" data-icon="arrow-u" class="ui-state-persist">Post</a></li>
+                <li><a href="#page-post" data-icon="plus" class="ui-state-persist">Post</a></li>
                 <li><a href="#page-map" data-icon="location">Map</a></li>
             </ul>
         </div>
@@ -151,16 +148,17 @@
                         <label for="serial-number">Headstamp</label>
                         <input name="headstamp" id="serial-number" value="" type="text">
 
-                        <label for="latitude">Latitude</label>
-                        <input name="latitude" id="latitude" value="" type="text">
+                        <div id="coordinates">
+                            <label for="latitude">Latitude</label>
+                            <input name="latitude" id="latitude" value="" type="text">
 
-                        <label for="longitude">Longitude</label>
-                        <input name="longitude" id="longitude" value="" type="text">
-
+                            <label for="longitude">Longitude</label>
+                            <input name="longitude" id="longitude" value="" type="text">
+                        </div>
                         <label for="photo-file">Photo:</label>
                         <input name="photo-file" id="photo-file" value="" type="file" accept="image/*">
                     </form>
-                    <button id="submit-search" data-icon="arrow-u" class="ui-shadow ui-corner-all">Post</button>
+                    <button id="btn-post" data-icon="edit" class="ui-shadow ui-corner-all">Post</button>
                 </td>
                 <td class="second-column">
                     <div id="small-map" class="maps"></div>
@@ -182,7 +180,7 @@
             <ul>
                 <li><a href="#page-home" data-icon="home">Home</a></li>
                 <li><a href="#page-search" data-icon="search">Search</a></li>
-                <li><a href="#page-post" data-icon="arrow-u">Post</a></li>
+                <li><a href="#page-post" data-icon="plus">Post</a></li>
                 <li><a href="#page-map" data-icon="location" class="ui-state-persist">Map</a></li>
             </ul>
         </div>

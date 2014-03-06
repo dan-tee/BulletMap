@@ -110,6 +110,10 @@ Then use JavaScript to show it.*/
     padding: 0;
 }
 
+#coordinates{
+    display: none;
+}
+
 #map{
     margin-right: 150px;
     height: 500px;
