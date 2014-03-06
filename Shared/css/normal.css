@@ -1,11 +1,11 @@
-#home #callout{
+#page-home #callout{
     padding-top: 40%;
 }
 
-#home #callout h1{
+#page-home #callout h1{
     font-size: 44px;
 }
 
-#home #callout h2{
+#page-home #callout h2{
     font-size: 35px;
 }

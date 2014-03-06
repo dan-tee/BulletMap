@@ -35,16 +35,17 @@
 </noscript>
 
 <!--------------------------- HOME ------------------------------------>
-<div data-role="page" id="home">
+<div data-role="page" id="page-home">
     <div data-role="header">
         <div class="headline-background">
             <h1>Bullet Map</h1>
         </div>
         <div data-role="navbar">
             <ul>
-                <li><a href="#home" data-icon="home" class="ui-btn-active ui-state-persist">Home</a></li>
-                <li><a href="#bullet-search" data-icon="search">Search</a></li>
-                <li><a href="#bullet-map" data-icon="location">Map</a></li>
+                <li><a href="#page-home" data-icon="home" class="ui-state-persist">Home</a></li>
+                <li><a href="#page-search" data-icon="search">Search</a></li>
+                <li><a href="#page-post" data-icon="arrow-u">Post</a></li>
+                <li><a href="#page-map" data-icon="location">Map</a></li>
             </ul>
         </div>
     </div>
@@ -85,95 +86,24 @@
 </div>
 
 <!--------------------------- Search ------------------------------------>
-<div data-role="page" id="bullet-search">
-    <div data-role="popup" id="error-message">
-    </div>
-
+<div data-role="page" id="page-search">
     <div data-role="header">
         <div class="headline-background">
             <h1>Bullet Map</h1>
         </div>
         <div data-role="navbar">
             <ul>
-                <li><a href="#home" data-icon="home">Home</a></li>
-                <li><a href="#bullet-search" data-icon="search" class="ui-state-persist">Search</a></li>
-                <li><a href="#bullet-map" data-icon="location">Map</a></li>
+                <li><a href="#page-home" data-icon="home">Home</a></li>
+                <li><a href="#page-search" data-icon="search" class="ui-state-persist">Search</a></li>
+                <li><a href="#page-post" data-icon="arrow-u">Post</a></li>
+                <li><a href="#page-map" data-icon="location">Map</a></li>
             </ul>
         </div>
     </div>
-
-    <div role="main" class="ui-content">
-        <table id="input-columns">
-            <tbody>
-            <tr>
-                <td class="first-column">
-                    <h2>Search for bullet info</h2>
-                    <form>
-                        <label for="serial-number">Headstamp</label>
-                        <input name="headstamp" id="serial-number" value="" type="text">
-
-                        <label for="latitude">Latitude</label>
-                        <input name="latitude" id="latitude" value="" type="text">
-
-                        <label for="longitude">Longitude</label>
-                        <input name="longitude" id="longitude" value="" type="text">
-
-                        <label for="photo-file">Photo:</label>
-                        <input name="photo-file" id="photo-file" value="" type="file" accept="image/*">
-                    </form>
-                    <button id="submit-search" data-icon="search" class="ui-shadow ui-corner-all">Search</button>
-                </td>
-                <td class="second-column">
-                    <div id="small-map" class="maps"></div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 </div>
+<div data-role="page" id="page-search-template">
 
-<!--------------------------- Map ------------------------------------>
-<div data-role="page" id="bullet-map">
 
-    <div data-role="header">
-        <div class="headline-background">
-            <h1>Bullet Map</h1>
-        </div>
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#home" data-icon="home">Home</a></li>
-                <li><a href="#bullet-search" data-icon="search">Search</a></li>
-                <li><a href="#bullet-map" data-icon="location" class="ui-state-persist">Map</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div role="main" class="ui-content">
-        <div id="legend">
-            <h3>Origin Colors</h3>
-            <ul></ul>
-    	</div>
-        <div id="map" class="maps"></div>
-        <div id="paneldiv" class="olControlNavToolbar"></div>
-    </div>
-</div>
-
-<!--------------------------- Bullet Info ------------------------------------>
-<div data-role="page" id="bullet-source">
-</div>
-<div data-role="page" id="bullet-source-template">
-
-    <div data-role="header">
-        <div class="headline-background">
-            <h1>Bullet Map</h1>
-        </div>
-        <div data-role="navbar">
-            <ul>
-                <li><a href="#home" data-icon="home">Home</a></li>
-                <li><a href="#bullet-search" data-icon="search">Search</a></li>
-            </ul>
-        </div>
-    </div>
 
     <div role="main" class="ui-content">
 
@@ -189,6 +119,82 @@
             </tr>
         </table>
         <button data-role="button" data-icon="cloud" id="upload">Upload finding</button>
+    </div>
+</div>
+
+<!--------------------------- Post ------------------------------------>
+<div data-role="page" id="page-post">
+    <div data-role="popup" id="error-message">
+    </div>
+
+    <div data-role="header">
+        <div class="headline-background">
+            <h1>Bullet Map</h1>
+        </div>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page-home" data-icon="home">Home</a></li>
+                <li><a href="#page-search" data-icon="search">Search</a></li>
+                <li><a href="#page-post" data-icon="arrow-u" class="ui-state-persist">Post</a></li>
+                <li><a href="#page-map" data-icon="location">Map</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div role="main" class="ui-content">
+        <table id="input-columns">
+            <tbody>
+            <tr>
+                <td class="first-column">
+                    <h2>Post a finding</h2>
+                    <form>
+                        <label for="serial-number">Headstamp</label>
+                        <input name="headstamp" id="serial-number" value="" type="text">
+
+                        <label for="latitude">Latitude</label>
+                        <input name="latitude" id="latitude" value="" type="text">
+
+                        <label for="longitude">Longitude</label>
+                        <input name="longitude" id="longitude" value="" type="text">
+
+                        <label for="photo-file">Photo:</label>
+                        <input name="photo-file" id="photo-file" value="" type="file" accept="image/*">
+                    </form>
+                    <button id="submit-search" data-icon="arrow-u" class="ui-shadow ui-corner-all">Post</button>
+                </td>
+                <td class="second-column">
+                    <div id="small-map" class="maps"></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!--------------------------- Map ------------------------------------>
+<div data-role="page" id="page-map">
+
+    <div data-role="header">
+        <div class="headline-background">
+            <h1>Bullet Map</h1>
+        </div>
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#page-home" data-icon="home">Home</a></li>
+                <li><a href="#page-search" data-icon="search">Search</a></li>
+                <li><a href="#page-post" data-icon="arrow-u">Post</a></li>
+                <li><a href="#page-map" data-icon="location" class="ui-state-persist">Map</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div role="main" class="ui-content">
+        <div id="legend">
+            <h3>Origin Colors</h3>
+            <ul></ul>
+    	</div>
+        <div id="map" class="maps"></div>
+        <div id="paneldiv" class="olControlNavToolbar"></div>
     </div>
 </div>
 </body>

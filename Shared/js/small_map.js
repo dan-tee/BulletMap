@@ -39,4 +39,4 @@ function setMarker(latlng){
 
 var marker;
 var small_map;
-$(document).on('pageshow', '#bullet-search', createSmallMap);
+$(document).on('pageshow', '#page-post', createSmallMap);

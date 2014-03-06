@@ -18,7 +18,7 @@
         for(var i = 0; i < findingsByCountries.length; i++){
             var colorString = "hsv(" + hueFraction * i + ", 50%, 50%)";
             var color = tinycolor(colorString).toHexString();
-            addLegendItem(color, findingsByCountries[i].Origin)
+            addLegendItem(color, findingsByCountries[i].Origin);
             paintForCountry(color, findingsByCountries[i]);
         }
 
@@ -26,7 +26,7 @@
     }
 
     function addLegendItem(color, origin){
-        $("#legend").find("ul").append('<li><font color="' + color + '">' + origin + "</font></li>")
+        $("#legend").find("ul").append('<li style= "color: ' + color + '">' + origin + '</li>')
     }
 
     function paintForCountry(color, findings){
@@ -50,7 +50,7 @@
 
     var map;
     var markerGroup = L.layerGroup();
-    $(document).on('pageshow', '#bullet-map', createAndMarkMap);
+    $(document).on('pageshow', '#page-map', createAndMarkMap);
 }());
 
 

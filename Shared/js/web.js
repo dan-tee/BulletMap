@@ -21,13 +21,13 @@
     // This is because jQM processes the raw html and adds its own enhanced version to the actual DOM.
     // See http://demos.jquerymobile.com/1.1.1/docs/pages/page-dynamic.html
     function renderBulletInfo(bullet_data) {
-        var template = $("#bullet-source-template").html();
+        var template = $("#page-search-template").html();
         var bulletSourceContent = $.mustache(template, bullet_data);
-        var bulletSourcePage = $("#bullet-source");
+        var bulletSourcePage = $("#page-search");
         bulletSourcePage.html(bulletSourceContent);
         bulletSourcePage.trigger('create');
         $.mobile.loading('hide');
-        $.mobile.navigate('#bullet-source');
+        $.mobile.navigate('#page-search');
     }
 
     function processBulletInfo(json, found_data) {
@@ -75,7 +75,7 @@
             processBulletInfo(json, inputObject);
         }
 
-        var input = $("#bullet-search").find("form :input");
+        var input = $("#page-post").find("form :input");
         var inputObject = inputToObject(input);
 
         if (!validateInput(inputObject)) return;
@@ -110,7 +110,7 @@
         var found_data = $.data(document.body, "found_data");
         if (found_data){
             $.post(server + "/found_shell", found_data);
-            $.mobile.navigate('#bullet-map');
+            $.mobile.navigate('#page-map');
         }
     });
 
