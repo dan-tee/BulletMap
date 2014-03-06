@@ -1,11 +1,10 @@
-#page-home #callout{
-    padding-top: 40%;
+#small-map{
+    height: 450px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
-#page-home #callout h1{
-    font-size: 44px;
-}
-
-#page-home #callout h2{
-    font-size: 35px;
+#page-post .ui-content{
+    margin-left: 5%;
+    margin-right: 5%;
 }

@@ -6,10 +6,19 @@
     padding-top: 30%;
 }
 
-#page-home #callout h1{
+#page-home #callout h2{
     font-size: 60px;
 }
 
-#page-home #callout h2{
+#page-home #callout h3{
     font-size: 50px;
+}
+
+#small-map{
+    height: 550px;
+}
+
+#page-post .ui-content{
+    margin-left: 15%;
+    margin-right: 15%;
 }

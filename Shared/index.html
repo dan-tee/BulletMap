@@ -10,7 +10,7 @@
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
     <![endif]-->
-    <link rel="stylesheet" href="css/custom.css" />
+    <link rel="stylesheet" href="css/imports.css" />
     <script type="text/javascript" src="js/cordova.js"></script>
     <script src="libs/jquery.min.js" ></script>
     <script src="libs/jquery.mobile-1.4.0.min.js"></script>
@@ -53,12 +53,12 @@
     <div role="main" class="ui-content">
         <div id="callout-background">
             <div id="callout">
-                <h1>
-                    Where are bullets coming from?
-                </h1>
                 <h2>
-                    Help us find out.
+                    Where are bullets coming from?
                 </h2>
+                <h3>
+                    Help us find out.
+                </h3>
                 <a id="home-carat-a" href="#text-anchor">
                     <img id="home-carat" src="libs/images/icons-svg/carat-d-white.svg">
                 </a>
@@ -139,33 +139,25 @@
     </div>
 
     <div role="main" class="ui-content">
-        <table id="input-columns">
-            <tbody>
-            <tr>
-                <td class="first-column">
-                    <h2>Post a finding</h2>
-                    <form>
-                        <label for="serial-number">Headstamp</label>
-                        <input name="headstamp" id="serial-number" value="" type="text">
+        <h2>Post a finding</h2>
+        <form>
+            <label for="serial-number">Headstamp</label>
+            <input name="headstamp" id="serial-number" value="" type="text">
 
-                        <div id="coordinates">
-                            <label for="latitude">Latitude</label>
-                            <input name="latitude" id="latitude" value="" type="text">
+            <div id="coordinates">
+                <label for="latitude">Latitude</label>
+                <input name="latitude" id="latitude" value="" type="text">
 
-                            <label for="longitude">Longitude</label>
-                            <input name="longitude" id="longitude" value="" type="text">
-                        </div>
-                        <label for="photo-file">Photo:</label>
-                        <input name="photo-file" id="photo-file" value="" type="file" accept="image/*">
-                    </form>
-                    <button id="btn-post" data-icon="edit" class="ui-shadow ui-corner-all">Post</button>
-                </td>
-                <td class="second-column">
-                    <div id="small-map" class="maps"></div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                <label for="longitude">Longitude</label>
+                <input name="longitude" id="longitude" value="" type="text">
+            </div>
+            <label for="photo-file">Photo</label>
+            <input name="photo-file" id="photo-file" value="" type="file" accept="image/*">
+        </form>
+
+
+        <div id="small-map" class="maps"></div>
+        <button id="btn-post" data-icon="edit" class="ui-shadow ui-corner-all">Post</button>
     </div>
 </div>
 
