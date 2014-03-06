@@ -8,6 +8,14 @@ Then use JavaScript to show it.*/
     display: none;
 }
 
+.ui-btn-active {
+    color: #222 !important;
+    text-shadow: 0 0 !important;
+    background-color: #E7E7E7 !important;
+    box-shadow: 2px 2px 2px #BBB inset;
+    border: none;
+}
+
 #home .ui-content{
     padding: 0 !important;
 }
