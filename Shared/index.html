@@ -100,30 +100,35 @@
             </ul>
         </div>
     </div>
-</div>
-<div data-role="page" id="page-search-template">
     <div role="main" class="ui-content">
+        <div data-role="popup" class="error-message">
+        </div>
 
-        <h2>Bullet Info</h2>
-        <table>
-            <tr>
-                <td>Country of Origin: </td>
-                <td>{{countryOfOrigin}}</td>
-            </tr>
-            <tr>
-                <td>Additional Information: </td>
-                <td>{{comment}}</td>
-            </tr>
-        </table>
+        <img id="img-headstamps" src="images/headstamps.jpg">
+        <label for="headstamp-search">Headstamp</label>
+        <input name="headstamp" id="headstamp-search" value="" type="text">
         <button data-role="button" data-icon="search" id="btn-search">Search</button>
+        <div id="search-result">
+        </div>
+        <div id="search-result-template">
+            <hr>
+            <h2>Search result</h2>
+            <table>
+                <tr>
+                    <td>Country of Origin: </td>
+                    <td>{{countryOfOrigin}}</td>
+                </tr>
+                <tr>
+                    <td>Additional Information: </td>
+                    <td>{{comment}}</td>
+                </tr>
+            </table>
+        </div>
     </div>
 </div>
 
 <!--------------------------- Post ------------------------------------>
 <div data-role="page" id="page-post">
-    <div data-role="popup" id="error-message">
-    </div>
-
     <div data-role="header">
         <div class="headline-background">
             <h1>Bullet Map</h1>
@@ -139,10 +144,13 @@
     </div>
 
     <div role="main" class="ui-content">
+        <div data-role="popup" class="error-message">
+        </div>
+
         <h2>Post a finding</h2>
         <form>
-            <label for="serial-number">Headstamp</label>
-            <input name="headstamp" id="serial-number" value="" type="text">
+            <label for="headstamp-post">Headstamp</label>
+            <input name="headstamp" id="headstamp-post" value="" type="text">
 
             <div id="coordinates">
                 <label for="latitude">Latitude</label>
@@ -154,7 +162,6 @@
             <label for="photo-file">Photo</label>
             <input name="photo-file" id="photo-file" value="" type="file" accept="image/*">
         </form>
-
 
         <div id="small-map" class="maps"></div>
         <button id="btn-post" data-icon="edit" class="ui-shadow ui-corner-all">Post</button>

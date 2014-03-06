@@ -5,6 +5,9 @@
 }
 
 #page-post .ui-content{
-    margin-left: 5%;
-    margin-right: 5%;
+    margin: 0 12.5%;
+}
+
+#page-search .ui-content{
+    margin: 0 12.5%;
 }
