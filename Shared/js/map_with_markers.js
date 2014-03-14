@@ -48,7 +48,6 @@
         if (!map || !map instanceof L.Map){
             map = createMap('map');
         }
-
         requestDataAndMark();
     }
 
