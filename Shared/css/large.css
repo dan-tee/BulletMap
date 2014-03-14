@@ -25,3 +25,7 @@
 #page-search .ui-content{
     margin: 0 25%;
 }
+
+#page-map #map{
+    height: 700px;
+}

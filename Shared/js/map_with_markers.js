@@ -18,7 +18,11 @@
         for(var i = 0; i < findingsByCountries.length; i++){
             var colorString = "hsv(" + hueFraction * i + ", 50%, 50%)";
             var color = tinycolor(colorString).toHexString();
-            addLegendItem(color, findingsByCountries[i].origin);
+            seperator = ', ';
+            legendItem = findingsByCountries[i].origin;
+            if (i < findingsByCountries.length - 1)
+                legendItem += seperator;
+            addLegendItem(color, legendItem);
             paintForCountry(color, findingsByCountries[i]);
         }
 

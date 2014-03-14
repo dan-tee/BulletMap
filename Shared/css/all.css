@@ -96,6 +96,10 @@ h1 {
     display: none;
 }
 
+#page-post #coordinates{
+    display: none;
+}
+
 #page-post h2, label{
     margin-top: 0;
     margin-bottom: 10px;
@@ -107,23 +111,26 @@ h1 {
     margin: 15px -16px;
 }
 
-#legend{
-    float: right;
-    width: 150px;
-    padding-left: 10px;
-}
-
 #page-map .ui-content{
     padding: 0;
 }
 
-#coordinates{
-    display: none;
+#legend{
+    margin: 20px 0 10px 10px;
+}
+
+#legend h3{
+    display: inline;
+}
+
+#legend ul, #legend li{
+    display: inline;
+    padding-left: 0;
+    font-weight: bold;
 }
 
 #map{
-    margin-right: 150px;
-    height: 500px;
+    height: 350px;
 }
 
 .maps:after {
