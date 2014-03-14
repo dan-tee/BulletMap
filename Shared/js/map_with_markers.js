@@ -18,7 +18,7 @@
         for(var i = 0; i < findingsByCountries.length; i++){
             var colorString = "hsv(" + hueFraction * i + ", 50%, 50%)";
             var color = tinycolor(colorString).toHexString();
-            addLegendItem(color, findingsByCountries[i].Origin);
+            addLegendItem(color, findingsByCountries[i].origin);
             paintForCountry(color, findingsByCountries[i]);
         }
 
@@ -30,8 +30,8 @@
     }
 
     function paintForCountry(color, findings){
-        findings.Locations.forEach(function(location){
-            var marker = L.circleMarker([location.Latitude, location.Longitude], {
+        findings.locations.forEach(function(location){
+            var marker = L.circleMarker([location.latitude, location.longitude], {
                 color: color,
                 radius: 8,
                 fillOpacity: 0.5

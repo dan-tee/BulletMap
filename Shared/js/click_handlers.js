@@ -30,9 +30,8 @@
     // This is because jQM processes the raw html and adds its own enhanced version to the actual DOM.
     // See http://demos.jquerymobile.com/1.1.1/docs/pages/page-dynamic.html
     function renderBulletInfo(json) {
-        var bullet_data = bulletDataOrUnknowns(json);
         var template = $("#search-result-template").html();
-        var bulletSourceContent = $.mustache(template, bullet_data);
+        var bulletSourceContent = $.mustache(template, json);
         var resultDiv = $("#search-result");
         resultDiv.html(bulletSourceContent);
         resultDiv.trigger('create');
@@ -59,20 +58,6 @@
         errorDiv.empty();
         errorDiv.append("<p>" + message + "</p>");
         errorDiv.popup("open");
-    }
-
-    function bulletDataOrUnknowns(json) {
-        var bullet_data;
-
-        if (json.hasOwnProperty("_id")) {
-            bullet_data = json;
-        } else {
-            bullet_data = {};
-            ["headstamp", "weapon", "manufacturer", "countryOfOrigin"].forEach(function (attr) {
-                bullet_data[attr] = "unkown";
-            });
-        }
-        return bullet_data;
     }
 
     function validateInput(input){
