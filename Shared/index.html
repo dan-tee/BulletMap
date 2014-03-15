@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bullet Map</title>
-    <link rel="stylesheet" href="libs/jquery.mobile-1.4.0.min.css" />
-    <link rel="stylesheet" href="libs/leaflet.css" />
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="libs/jquery.mobile-1.4.0.min.css" />
+    <!--link rel="stylesheet" href="libs/leaflet.css" /-->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
     <![endif]-->
@@ -105,9 +106,11 @@
         </div>
 
         <img id="img-headstamps" src="images/headstamps.jpg">
-        <label for="headstamp-search">Headstamp</label>
-        <input name="headstamp" id="headstamp-search" value="" type="text">
-        <button data-role="button" data-icon="search" id="btn-search">Search</button>
+        <div id="search-input">
+            <label for="headstamp-search">Headstamp</label>
+            <input name="headstamp" id="headstamp-search" value="" type="text">
+            <button data-role="button" data-icon="search" id="btn-search">Search</button>
+        </div>
         <div id="search-result">
         </div>
         <div id="search-result-template">
@@ -164,7 +167,7 @@
         </form>
 
         <div id="small-map" class="maps"></div>
-        <button id="btn-post" data-icon="edit" class="ui-shadow ui-corner-all">Post</button>
+        <button id="btn-post" data-icon="plus" class="ui-shadow ui-corner-all">Post</button>
     </div>
 </div>
 
@@ -189,10 +192,13 @@
         <div id="legend">
             <h3>Origin Colors:</h3>
             <ul></ul>
+            <button id="btn-filter">
+                <img src="images/filter_gray.svg">
+                <span>Filter findings</span>
+            </button>
+            <span class="clear"></span>
     	</div>
-        <div id="filters">
 
-        </div>
         <div id="map" class="maps"></div>
         <div id="paneldiv" class="olControlNavToolbar"></div>
     </div>

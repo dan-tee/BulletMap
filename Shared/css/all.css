@@ -83,13 +83,17 @@ h1 {
     padding: 0;
 }
 
+#search-input {
+    margin: 0 20px;
+}
+
 #page-search hr{
     margin-top: 25px;
 }
 
 #img-headstamps{
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 1em;
 }
 
 #search-result-template{
@@ -116,21 +120,48 @@ h1 {
 }
 
 #legend{
-    margin: 20px 0 10px 10px;
+    margin: 20px 0 5px 20px;
 }
 
 #legend h3{
     display: inline;
+    font-size: 24px;
 }
 
 #legend ul, #legend li{
     display: inline;
     padding-left: 0;
     font-weight: bold;
+    font-size: 24px;
 }
 
 #map{
     height: 350px;
+}
+
+#btn-filter{
+    margin-right: 20px;
+    vertical-align: middle;
+    width: auto;
+    padding: 5px;
+    float: right;
+    background-color: #f4f4f4;
+}
+
+#btn-filter span{
+    margin: 0 5px;
+    vertical-align: middle;
+}
+
+#btn-filter img{
+    width: 22px;
+    height: 22px;
+    vertical-align: middle;
+}
+
+span.clear {
+    clear: right;
+    display: block;
 }
 
 .maps:after {
