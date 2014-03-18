@@ -26,6 +26,7 @@
     <script src="js/click_handlers.js" defer></script>
     <script src="js/small_map.js" defer></script>
     <script src="js/map_with_markers.js" defer></script>
+    <script src="js/init.js" defer></script>
     </head>
 <body>
 
@@ -34,6 +35,13 @@
         JavaScript must be enabled in your browser for this site to work.
     </h1>
 </noscript>
+
+<!------------------------ DEMO WARNING ------------------------------->
+<div data-role="page" id="page-demo-warning">
+    <h1>This is only a demo</h1>
+    <p>All data will be reset frequently.</p>
+    <a href="#page-home" data-role="button">I wanna see it anyway</a>
+</div>
 
 <!--------------------------- HOME ------------------------------------>
 <div data-role="page" id="page-home">
@@ -196,8 +204,8 @@
                 <img src="images/filter_gray.svg">
                 <span>Filter findings</span>
             </button>
-            <div id="filter-popup" data-role="popup" data-position-to="#btn-filter" data-arrow="t">
-                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+            <div id="filter-popup" data-role="popup" data-position-to="#btn-filter" data-arrow="t" data-overlay-theme="b">
+                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-left">Close</a>
                 <div data-role="collapsible">
                     <h4>Show only top origins</h4>
                     <label for="top-filter">Top:</label>
