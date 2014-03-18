@@ -1,3 +1,15 @@
+#page-home #callout h2{
+    font-size: 44px;
+}
+
+#page-home #callout h3{
+    font-size: 35px;
+}
+
+#home-carat{
+    width: 22px;
+}
+
 #small-map{
     height: 450px;
     margin-left: 0;

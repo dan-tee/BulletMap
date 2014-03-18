@@ -37,7 +37,7 @@ h1 {
 
 #page-home #callout h2{
     padding-left: 10%;
-    font-size: 44px;
+    font-size: 36px;
     color: white;
     font-weight: bold;
     text-shadow: 0 0;
@@ -46,7 +46,7 @@ h1 {
 
 #page-home #callout h3{
     padding-left: 10%;
-    font-size: 35px;
+    font-size: 28px;
     color: white;
     font-weight: normal;
     text-shadow: 0 0;
@@ -55,7 +55,7 @@ h1 {
 
 #home-carat{
     margin: 0 auto;
-    width: 22px;
+    width: 18px;
     display: block;
 }
 
@@ -120,7 +120,7 @@ h1 {
 }
 
 #legend{
-    margin: 20px 0 5px 20px;
+    margin: 15px 0 5px 20px;
 }
 
 #legend h3{
@@ -128,24 +128,30 @@ h1 {
     font-size: 24px;
 }
 
-#legend ul, #legend li{
+#legend ul{
+    display: inline;
+    padding-left: 0;
+    margin: 0;
+}
+
+#legend li{
     display: inline;
     padding-left: 0;
     font-weight: bold;
     font-size: 24px;
 }
 
-#map{
-    height: 350px;
-}
-
 #btn-filter{
-    margin-right: 20px;
-    vertical-align: middle;
+    display: inline;
+    margin: 0 10px;
     width: auto;
     padding: 5px;
     float: right;
     background-color: #f4f4f4;
+}
+
+#map{
+    height: 350px;
 }
 
 #btn-filter span{
