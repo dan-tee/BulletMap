@@ -150,6 +150,11 @@ h1 {
     background-color: #f4f4f4;
 }
 
+#filter-popup{
+    min-width: 300px;
+    padding: 5px;
+}
+
 #map{
     height: 350px;
 }

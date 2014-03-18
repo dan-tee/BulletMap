@@ -196,6 +196,19 @@
                 <img src="images/filter_gray.svg">
                 <span>Filter findings</span>
             </button>
+            <div id="filter-popup" data-role="popup" data-position-to="#btn-filter" data-arrow="t">
+                <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+                <div data-role="collapsible">
+                    <h4>Show only top origins</h4>
+                    <label for="top-filter">Top:</label>
+                    <input type="range" name="top-filter" id="top-filter" min="0" max="20" value="5">
+                </div>
+                <div data-role="collapsible">
+                    <h4>Show only new entries</h4>
+                    <label for="date-filter">Show only entries newer than:</label>
+                    <input type="date" name="date-filter" id="date-filter">
+                </div>
+            </div>
             <span class="clear"></span>
     	</div>
 

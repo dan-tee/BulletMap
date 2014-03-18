@@ -24,6 +24,10 @@
             event.preventDefault();
             postFindingAndGotoMap();
         });
+
+        $(document).on('click', '#btn-filter', function(){
+            $('#filter-popup').popup('open');
+        });
     }
 
     // We have to reload the page after the filled in Moustache template is added.
