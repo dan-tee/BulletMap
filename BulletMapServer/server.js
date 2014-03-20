@@ -6,19 +6,19 @@ var express = require('express')
   , config = require('./config.json')
   , winston = require('winston');
 
-winston.handleExceptions(new winston.transports.Console);
+//winston.handleExceptions(new winston.transports.Console);
 var logger = new winston.Logger({
     transports: [new (winston.transports.Console)({ level: config.logLevel })]
 });
 
-var app = require('./express_config')(express, config.port);
+var app = require('./express_config')(express, config);
 var connect = require('./mongoose_config');
 connect(mongoose, function(cnn){
 
     require('./routes')(app, mongoose, cnn, logger, purgeCache);
 
-    http.createServer(app).listen(config.port, function () {
-        logger.info("Express server listening on port " + config.port);
+    http.createServer(app).listen(app.get('port'), function () {
+        logger.info("Express server listening on port " + app.get('port'));
     });
 });
 
@@ -31,6 +31,10 @@ function purgeCache(){
         method: 'PURGE'
     };
 
-    http.request(options);
+    var req = http.request(options);
+    req.on('error', function(e) {
+        logger.error('Problem with purge request: ' + e.message);
+    });
+    req.end();
 }
 
