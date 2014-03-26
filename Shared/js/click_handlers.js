@@ -52,16 +52,16 @@
         else if (error) message = status + ", " + error;
         else message = "Couldn't get bullet information from server. Maybe the server is unavailable.";
 
-        showError(message);
+        showError($('#page-search'), message);
 
         $.mobile.loading('hide');
     }
 
-    function showError(message){
-        var errorDiv = $(".error-message");
-        errorDiv.empty();
-        errorDiv.append("<p>" + message + "</p>");
-        errorDiv.popup("open");
+    function showError(page, message){
+        var errorDivs = page.find(".error-message");
+        errorDivs.empty();
+        errorDivs.append("<p>" + message + "</p>");
+        errorDivs.popup("open");
     }
 
     function validateInput(input){
@@ -71,7 +71,7 @@
             return true;
         }
         else{
-            showError("Please give either a headstamp or a photo.");
+            showError($('#page-post'), "Please give either a headstamp or a photo.");
             $("#headstamp-post").addClass("error");
             $("#photo-file").addClass("error");
             return false;
