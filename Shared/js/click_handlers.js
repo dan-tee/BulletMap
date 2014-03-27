@@ -12,8 +12,8 @@
         });
 
         $(document).on('click', '#btn-search', function(){
-            var headstamp = $("#headstamp-search").val();
-            var url = server + "/bullet/" + headstamp;
+            var headstamp = $('#headstamp-search').val();
+            var url = server + '/bullet/' + headstamp;
             $.mobile.loading('show');
             $.getJSON(url).done(renderBulletInfo)
                           .fail(onError);
@@ -34,9 +34,9 @@
     // This is because jQM processes the raw html and adds its own enhanced version to the actual DOM.
     // See http://demos.jquerymobile.com/1.1.1/docs/pages/page-dynamic.html
     function renderBulletInfo(json) {
-        var template = $("#search-result-template").html();
+        var template = $('#search-result-template').html();
         var bulletSourceContent = $.mustache(template, json);
-        var resultDiv = $("#search-result");
+        var resultDiv = $('#search-result');
         resultDiv.html(bulletSourceContent);
         resultDiv.trigger('create');
         $.mobile.loading('hide');
@@ -45,12 +45,13 @@
     }
 
     function onError(jqXHR, status, error){
+        // jqXHR.status differs from status
         if (jqXHR.status === 404){
             message = "Couldn't find headstamp in database. Please check if it is correct.";
-            $("#headstamp").addClass("error");
+            $('#headstamp').addClass('error');
         }
-        else if (error) message = status + ", " + error;
-        else message = "Couldn't get bullet information from server. Maybe the server is unavailable.";
+        else if (error === 'timeout')message = "Couldn't get bullet information in time. Maybe the server is unavailable.";
+        else message = status + ', ' + error;
 
         showError($('#page-search'), message);
 
@@ -58,37 +59,33 @@
     }
 
     function showError(page, message){
-        var errorDivs = page.find(".error-message");
+        var errorDivs = page.find('.error-message');
         errorDivs.empty();
-        errorDivs.append("<p>" + message + "</p>");
-        errorDivs.popup("open");
-    }
-
-    function validateInput(input){
-        if (input.headstamp || input.photo){
-            $("#headstamp-post").removeClass("error");
-            $("#photo-file").removeClass("error");
-            return true;
-        }
-        else{
-            showError($('#page-post'), "Please give either a headstamp or a photo.");
-            $("#headstamp-post").addClass("error");
-            $("#photo-file").addClass("error");
-            return false;
-        }
+        errorDivs.append('<p>' + message + '</p>');
+        errorDivs.popup('open');
     }
 
     function postFindingAndGotoMap(){
+
         var input = $('#page-post').find('form :input');
         var inputObject = inputToObject(input);
 
         if (!validateInput(inputObject)) return;
 
-        $.post(server + '/found_shell', inputObject);
-
-        $.mobile.navigate('#page-map');
-        // clear the page
-        location.reload();
+        $.mobile.loading('show');
+        var jqxhr = $.post(server + '/found_shell', inputObject);
+        jqxhr.done(function() {
+            $.mobile.loading('hide');
+            $.mobile.navigate('#page-map');
+            // clear the page
+            location.reload();
+        });
+        jqxhr.fail(function(jqXHR, status, error) {
+            $.mobile.loading('hide');
+            if (error === 'timeout') message = "Couldn't post finding in time. Maybe the server is unavailable.";
+            else message = status + ', ' + error;
+            showError($('#page-post'), message);
+        });
     }
 
     function inputToObject(input)
@@ -96,11 +93,25 @@
         var result = {};
         var inputArray = input.serializeArray();
 
-        $.each(inputArray, function() {
-            result[this.name] = this.value || '';
+        $.each(inputArray, function(index, item) {
+            result[item.name] = item.value || '';
         });
 
         return result;
+    }
+
+    function validateInput(input){
+        if (input.headstamp || input.photo){
+            $('#headstamp-post').removeClass('error');
+            $('#photo-file').removeClass('error');
+            return true;
+        }
+        else{
+            showError($('#page-post'), 'Please give either a headstamp or a photo.');
+            $('#headstamp-post').addClass('error');
+            $('#photo-file').addClass('error');
+            return false;
+        }
     }
 
     main();

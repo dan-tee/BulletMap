@@ -196,11 +196,16 @@ span.clear {
     opacity: 0.7;
 }
 
-#error-message {
-    border-color: #7E0000;
-    background-color: darkred;
+.error-message {
+    border-color: #7E0000 !important;
+    background-color: darkred !important;
+
+}
+
+.error-message p{
     color: #E8E8E8;
     text-shadow: none;
+    font-size: 18px;
 }
 
 input.error {
