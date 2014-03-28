@@ -6,4 +6,5 @@ $.ajaxSetup({
     timeout: 5000 // milliseconds
 });
 
-var server = "http://bulletmap.org";
+var server = 'http://localhost:3000';
+//var server = "http://bulletmap.org";

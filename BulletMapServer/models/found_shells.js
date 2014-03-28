@@ -1,22 +1,33 @@
 // changing this breaks existing installations. On change update
 // the installation guide.
 var MODEL_NAME = 'found_shell';
-module.exports = function(mongoose, connection, bulletInfoModel){
+module.exports = function(mongoose, connection, bulletInfoModel, logger){
 
     var schema = new mongoose.Schema({
-        headstamp: String,
-        latitude: { type: Number, index: true },
-        longitude: { type: Number, index: true },
-        uploadDate: { type: Date, index: true },
-        origin: { type: String, index:true }
+        headstamp: { type: String, required: true},
+        latitude: { type: Number, required: true, index: true },
+        longitude: { type: Number, required: true, index: true },
+        uploadDate: { type: Date, required: true, index: true },
+        origin: { type: String, required: true, index:true }
     });
 
-    schema.statics.addShellLocation = function(foundShell){
+    schema.statics.addShellLocation = function(foundShell, res){
         var shellModel = new Model(foundShell);
+        if (!shellModel.headstamp){
+            logger.error('Post without headstamp.');
+            res.send(404, 'Post without headstamp.');
+            return;
+        }
         shellModel.uploadDate = Date.now();
         bulletInfoModel.findOne( { "_id": shellModel.headstamp } , function(err, bullet_info){
             shellModel.origin = bullet_info.origin;
-            shellModel.save(function(err){});
+            shellModel.save(function(err){
+                if (err) {
+                    logger.error(err);
+                    res.send(404, err.message);
+                }
+                res.send(200);
+            });
         })
     };
 

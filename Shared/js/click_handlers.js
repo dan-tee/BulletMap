@@ -1,6 +1,6 @@
 (function(){
 
-    // executes on script load
+    // executes when this script loads
     function main(){
 
         // This binds to all object with the right id, even if they are constructed later.
@@ -50,15 +50,17 @@
             message = "Couldn't find headstamp in database. Please check if it is correct.";
             $('#headstamp').addClass('error');
         }
-        else if (error === 'timeout')message = "Couldn't get bullet information in time. Maybe the server is unavailable.";
-        else message = status + ', ' + error;
-
-        showError($('#page-search'), message);
+        showError($('#page-search'), jqXHR, error);
 
         $.mobile.loading('hide');
     }
 
-    function showError(page, message){
+    function showError(page,  jqXHR, error){
+        var message;
+        if (error === 'timeout') message = "Couldn't get response in time. Maybe the server is unavailable.";
+        if (jqXHR.responseText) message = jqXHR.responseText;
+        else message = error;
+
         var errorDivs = page.find('.error-message');
         errorDivs.empty();
         errorDivs.append('<p>' + message + '</p>');
@@ -82,9 +84,7 @@
         });
         jqxhr.fail(function(jqXHR, status, error) {
             $.mobile.loading('hide');
-            if (error === 'timeout') message = "Couldn't post finding in time. Maybe the server is unavailable.";
-            else message = status + ', ' + error;
-            showError($('#page-post'), message);
+            showError($('#page-post'), jqXHR, error);
         });
     }
 
