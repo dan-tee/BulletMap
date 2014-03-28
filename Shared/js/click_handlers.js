@@ -34,6 +34,7 @@
     // This is because jQM processes the raw html and adds its own enhanced version to the actual DOM.
     // See http://demos.jquerymobile.com/1.1.1/docs/pages/page-dynamic.html
     function renderBulletInfo(json) {
+        $('#headstamp-search').removeClass('error');
         var template = $('#search-result-template').html();
         var bulletSourceContent = $.mustache(template, json);
         var resultDiv = $('#search-result');
@@ -49,7 +50,7 @@
         // jqXHR.status differs from status
         if (jqXHR.status === 404){
             message = "Couldn't find headstamp in database. Please check if it is correct.";
-            $('#headstamp').addClass('error');
+            $('#headstamp-search').addClass('error');
         } else {
             message = getErrorMessage(jqXHR, error)
         }
