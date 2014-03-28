@@ -45,22 +45,26 @@
     }
 
     function onError(jqXHR, status, error){
+        var message;
         // jqXHR.status differs from status
         if (jqXHR.status === 404){
             message = "Couldn't find headstamp in database. Please check if it is correct.";
             $('#headstamp').addClass('error');
+        } else {
+            message = getErrorMessage(jqXHR, error)
         }
-        showError($('#page-search'), jqXHR, error);
+        showError($('#page-search'), message);
 
         $.mobile.loading('hide');
     }
 
-    function showError(page,  jqXHR, error){
-        var message;
-        if (error === 'timeout') message = "Couldn't get response in time. Maybe the server is unavailable.";
-        if (jqXHR.responseText) message = jqXHR.responseText;
-        else message = error;
+    function getErrorMessage(jqXHR, error){
+        if (error === 'timeout') return "Couldn't get response in time. Maybe the server is unavailable.";
+        if (jqXHR.responseText) return jqXHR.responseText;
+        return error;
+    }
 
+    function showError(page, message){
         var errorDivs = page.find('.error-message');
         errorDivs.empty();
         errorDivs.append('<p>' + message + '</p>');
@@ -84,7 +88,8 @@
         });
         jqxhr.fail(function(jqXHR, status, error) {
             $.mobile.loading('hide');
-            showError($('#page-post'), jqXHR, error);
+            var message = getErrorMessage(jqXHR, error);
+            showError($('#page-post'), message);
         });
     }
 
